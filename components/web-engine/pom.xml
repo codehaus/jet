@@ -1,0 +1,97 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.codehaus.jet</groupId>
+		<artifactId>jet-parent</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>jet-web-engine</artifactId>
+	<packaging>war</packaging>
+	<name>JET Web Engine</name>
+
+	<properties>
+		<war.name>jet</war.name>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>${pom.groupId}</groupId>
+			<artifactId>jet-engine</artifactId>
+			<version>${pom.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>${pom.groupId}</groupId>
+			<artifactId>jet-web</artifactId>
+			<version>${pom.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>build-web-artifacts</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<tasks>
+								<echo>Building web artifacts</echo>
+								<copy todir="${webapp.dir}" overwrite="true">
+									<fileset
+										dir="${src.dir}">
+										<include name="images/**" />
+										<include name="js/**" />
+										<include name="jsp/**" />
+										<include name="style/**" />
+									</fileset>
+								</copy>
+								<copy todir="${webapp.dir}/WEB-INF" overwrite="true">
+									<fileset
+										dir="${src.dir}/conf/struts" />
+								</copy>
+								<copy todir="${webapp.dir}/WEB-INF" overwrite="true">
+									<fileset
+										dir="${distribution.src.dir}/tld" />
+								</copy>
+								<copy todir="${webapp.dir}/WEB-INF/classes"
+									overwrite="true">
+									<fileset
+										dir="${src.dir}/conf/bundles" />
+									<fileset
+										dir="${src.dir}/conf/nanowar" />
+								</copy>
+								<copy todir="${webapp.dir}/WEB-INF/classes" overwrite="true">
+					        			<fileset dir="${distribution.src.dir}/conf">
+        									<include name="*.xml"/>
+        								</fileset>
+									<filterset>
+	    	    								<filtersfile file="${jet.properties}"/>
+	    	  							</filterset>
+								</copy>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<webXml>${basedir}/src/conf/web.xml</webXml>
+					<warName>${war.name}</warName>
+					<warSourceDirectory>${webapp.dir}</warSourceDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

@@ -1,0 +1,16 @@
+<container>
+	<component-implementation key='org.codehaus.jet.JetEngine'
+							class='org.codehaus.jet.web.actions.struts.TestJetEngine'>
+	</component-implementation>
+
+	<component-implementation class='org.codehaus.jet.web.forms.FormValidator'>
+	  <parameter>
+	  	<string>dd/MM/yyyy</string>
+   	  </parameter>
+	</component-implementation>
+
+	<component-implementation key='/queryEstimates'
+					class='org.codehaus.jet.web.actions.struts.StrutsQueryEstimatesAction'>
+	</component-implementation>
+
+</container>
