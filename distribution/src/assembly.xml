@@ -1,0 +1,20 @@
+<assembly>
+	<id>bin</id>
+	<formats>
+		<format>tar.gz</format>
+		<format>zip</format>
+	</formats>
+	<dependencySets>
+		<dependencySet>
+			<outputDirectory>/lib</outputDirectory>
+			<unpack>false</unpack>
+			<scope>runtime</scope>
+		</dependencySet>
+		<dependencySet>
+			<outputDirectory>/webapps</outputDirectory>
+			<outputFileNameMapping>${artifactId}.${extension}</outputFileNameMapping>
+			<unpack>false</unpack>
+			<scope>webapp</scope>
+		</dependencySet>
+	</dependencySets>
+</assembly>
