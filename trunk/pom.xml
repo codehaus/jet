@@ -20,13 +20,17 @@
 		<repository>
 			<id>codehaus-jet-repository</id>
 			<name>Codehaus JET Repository</name>
-			<url>scp://beaver.codehaus.org/home/projects/jet/repository</url>
+			<url>dav:https://dav.codehaus.org/repository/jet/</url>
 		</repository>
 		<snapshotRepository>
 			<id>codehaus-jet-snapshot-repository</id>
 			<name>Codehaus JET Snapshot Repository</name>
-			<url>scp://beaver.codehaus.org/home/projects/jet/repository-snapshot</url>
+			<url>dav:https://dav.codehaus.org/snapshots.repository/jet/</url>
 		</snapshotRepository>
+		<site>
+			<id>jet-site</id>
+			<url>dav:https://dav.codehaus.org/jet/</url>
+		</site>
 	</distributionManagement>
 
 	<scm>
@@ -67,10 +71,7 @@
 		<module>components/engine</module>
 		<module>components/web</module>
 		<module>components/web-engine</module>
-		<!--
-		<module>website</module>
 		<module>distribution</module>
-		-->
 	</modules>
 
 		<dependencyManagement>
@@ -604,6 +605,11 @@
 				<groupId>org.apache.maven.wagon</groupId>
 				<artifactId>wagon-ssh-external</artifactId>
 				<version>1.0-alpha-5</version>
+			</extension>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav</artifactId>
+				<version>1.0-beta-1-SNAPSHOT</version>
 			</extension>
 		</extensions>
 	</build>
