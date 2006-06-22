@@ -1,0 +1,54 @@
+<struts-config>
+    <!-- Form Beans  -->
+    <form-beans>	
+    
+		<form-bean  name="estimatesQueryForm"
+        			type="org.codehaus.jet.web.forms.struts.StrutsEstimatesQueryForm"/>    	
+    </form-beans>
+
+    <!-- Global Exceptions -->
+	<global-exceptions>
+   		<exception key="pico.exception" type="org.picocontainer.PicoException" 
+	              path="exceptionTile"/>
+	</global-exceptions>
+
+     <!-- Action Mappings -->
+     <action-mappings>
+             
+        <action path="/forwardHome" 
+        		name="econometricsForm" 
+        		type="org.codehaus.jet.web.actions.struts.StrutsForwardHomeAction">
+	        <forward name="success" path="homeTile"/> 
+	        <forward name="error" path="homeTile"/> 
+        </action>	
+        
+        <action path="/sessionExpired" 
+        		name="econometricsForm" 
+        		type="org.codehaus.jet.web.actions.struts.StrutsSessionExpiredAction">
+	        <forward name="success" path="homeTile"/> 
+	        <forward name="error" path="homeTile"/> 
+        </action>	
+        
+        <action path="/queryEstimates" 
+        		name="estimatesQueryForm" 
+        		scope="request"
+        		type="org.codehaus.jet.web.actions.struts.StrutsQueryEstimatesAction">
+	        <forward name="success" path="estimatesTile"/> 
+	        <forward name="error" path="estimatesTile"/> 
+        </action>	
+     </action-mappings>
+     
+     <!-- Controller to use Nanowar's RequestProcessor -->
+     <controller processorClass="org.nanocontainer.nanowar.struts.PicoTilesRequestProcessor"/>
+
+     <!-- Message Resources - do not remove as it is required by Struts -->
+     <message-resources parameter="JSPBundle"/>
+
+     <!-- Tiles plug-in -->
+     <plug-in className="org.apache.struts.tiles.TilesPlugin">
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+        <set-property property="definitions-parser-validate" value="false" />
+     </plug-in>
+	
+</struts-config>
+
