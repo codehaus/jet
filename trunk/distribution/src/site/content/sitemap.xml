@@ -1,0 +1,24 @@
+<sitemap>
+    <section>
+        <name>About JET</name>
+        <page>index.html</page>
+        <page>license.html</page>
+        <page>download.html</page>
+        <page>news.html</page>
+        <page>changes.html</page>
+        <page>versioning.html</page>
+    </section>
+    <section>
+        <name>Using JET</name>
+        <page>getting-started.html</page>
+        <page>faq.html</page>
+        <page>list-user.html</page>
+        <link title="Reporting Issues">http://jira.codehaus.org/browse/JET</link>
+    </section>
+    <section>
+        <name>Developing JET</name>
+        <page>list-dev.html</page>
+        <page>team.html</page>
+        <page>repository.html</page>
+    </section>
+</sitemap>
