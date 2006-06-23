@@ -1,0 +1,165 @@
+body {
+	font-size: 11pt; font-family: arial, helvetica, sans-serif; background-color: white; padding:0px; margin:0px;
+}
+p, ul, li {
+	font-family:Arial, Helvetica, sans-serif; font-size:11px;
+}
+img { border:0 none #ffffff; vertical-align:middle;}
+
+.buttonBlue {
+	background-color:#4C71BC; height:20px; color:#ffffff; border-style:solid; border-width:1px; border-top-color:#C6D4F1; border-left-color:#C6D4F1; border-bottom-color:#000066; border-right-color:#000066; 
+}
+#navigation p{
+	background-image:url(../images/button_background.gif); background-repeat:no-repeat; height:22px; padding-top:2px; padding-bottom:0px; margin-top:0px; margin-bottom:10px;
+}	
+#navigation p a{
+	color:#FFFFFF; font-size:13px; font-family:Arial; padding: 6px 5px 0px 15px; margin-top:3px;
+}	
+#navigation p a:hover{
+	color:#000066;
+}
+#reportNavigation {
+	background-image:url(../images/background_menu_report.gif); background-repeat:repeat-x; vertical-align:top; margin:0px; padding:0px;}
+	
+#reportNavigation td{
+ background-image:url(../images/button_background_report.gif); background-repeat:no-repeat; width:152px; height:22px; padding-top:0px; padding-bottom:0px;
+}	
+#reportNavigation th{
+ width:22px; height:22px;
+}
+#reportNavigation a{
+	 margin-top:0px; margin-bottom:5px; color:#FFFFFF; font-size:13px; font-family:Arial; padding: 0px 5px 0px 15px; margin-top:0px;
+}	
+#reportNavigation a:hover{
+	color:#000066;
+}
+
+a {
+	font-weight: bold; font-size: 11px; color: #000066; text-decoration: none
+}
+a:link {
+	font-weight: bold; font-size: 11px; color: #000066; text-decoration: none
+}
+a:visited {
+	font-weight: bold; font-size: 11px; color: #000066; text-decoration: none
+}
+a:active {
+	font-weight: bold; font-size: 11px; color: #000066; text-decoration: none
+}
+a:hover {
+	font-weight: bold; font-size: 11px; color: #000066; text-decoration: none
+}
+select, input { background-color:#f9f9f9; font-size:10px; font-family:arial; color:#666666;}
+div {
+	padding: 0px; margin: 0px; border:0px;
+}
+table {
+	padding: 0px; margin: 0px; border:0px; 
+}
+td {
+	padding: 0px; margin: 0px; 
+}
+#body, #body #layoutTable {
+height:100%;
+}
+#centered {
+	text-align: center
+}
+#home, #home table {
+font-size:11px; border:0px; width:600px;
+}
+#tableTitle{
+font-size:16px; font-weight:bold; color:#666666; border-bottom:3px solid #ffce31; width:100%; margin-bottom:15px;
+}
+#header {
+	 width: 778px; vertical-align: text-bottom; background-image:url(../images/banner_full.jpg); background-repeat:no-repeat; color: #003399; height: 48px; text-align: right; 
+}
+
+#headerReport #header {
+	 width: 778px; vertical-align: text-bottom; background-image:url(../images/banner_full_report.jpg); background-repeat:no-repeat; color: #003399; height: 45px; text-align: right; 
+}
+
+
+#header img {
+	 vertical-align:bottom; 
+}
+#navigation, #navigation table {
+	vertical-align: top; width: 136px; height:100%; background-image:url(../images/background_menu.gif); background-repeat:repeat-y;
+}
+#messages {
+	width: 600px; font-size:11px  
+}
+#content {
+	border: #999 0px solid; width: 600px; background-color: white; vertical-align:top; padding:20px;
+}
+#formLabel {
+	padding-left: 0px
+}
+#formInput {
+	padding-left: 0px
+}
+#formControl {
+	padding-left: 0px
+}
+#portfolio, #chartsquery, #statisticsQuery {
+	vertical-align: top; background-color: white; width:600px;
+}
+#maintable {
+width:600px;
+}
+#portfolio #tableContent tbody td {
+ padding: 2px 6px;
+}
+#tableContent {
+border-right: 1px solid #999999; width: 100%; font-size:11px;
+}
+#tableContent thead td {
+	 padding: 2px 6px; color:#ffffff; background-color:#000066; border-left: 1px solid #999999; white-space:nowrap;
+}
+#tableContent tbody td {
+	border-left: 1px solid #999999; border-bottom: 1px solid #999999; background-color:#eeeeee;
+}
+#tableContent #tableRow{
+ 	font-size:11px;  text-align:left; vertical-align:top; border-width:0px; border:none; width:100%;}
+#tableContent #tableRow th{
+ 	padding:5px 10px; vertical-align:top; font-weight:normal; border-width:0px; border:none; background-color:eeeeee;}
+#tableContent #tableRow td{
+	padding:5px 10px; vertical-align:top; border-width:0px; border:none; background-color:f9f9f9;}
+
+#blue {
+	padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 0px; color: #000066; padding-top: 0px
+}
+#gold {
+	padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 0px; color: #003399; padding-top: 0px
+}
+#red {
+	padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 0px; color: red; padding-top: 0px
+}
+#reportResult {
+	border-right: #999 1px solid; padding-right: 0px; border-top: #999 1px solid; padding-left: 0px; padding-bottom: 0px; margin: 0px; border-left: #999 1px solid; padding-top: 0px; border-bottom: #999 1px solid
+}
+#statisticResult {
+	border-right: #999 1px solid; padding-right: 0px; border-top: #999 1px solid; padding-left: 0px; padding-bottom: 0px; margin: 0px; border-left: #999 1px solid; padding-top: 0px; border-bottom: #999 1px solid
+}
+
+.text {
+	font-size: 11pt; font-family: arial, helvetica, sans-serif;
+}
+.link {
+	font-weight: bold; font-size: 11pt; color: #000066; font-family: arial, helvetica, sans-serif;
+}
+
+.table_header {
+	text-align: center
+}
+.padding5_10 {
+padding:5px 10px;}
+.padding2_3 {
+padding:2px 3px;}
+
+.application_name {
+	font-family:'Times New Roman', Times, serif; font-size:20px ! important; color:#FFFFFF; padding-left:15px; 
+}
+.module_name {
+	color:#608AE2; font-family: Arial, Verdana, Helvetica, sans-serif; font-size:24px; padding:0px 20px 0px 20px; font-weight:bold;
+}
