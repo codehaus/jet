@@ -12,6 +12,7 @@
     <section>
         <name>Using JET</name>
         <page>getting-started.html</page>
+        <page>critical-values.html</page>
         <page>faq.html</page>
         <page>list-user.html</page>
         <link title="Reporting Issues">http://jira.codehaus.org/browse/JET</link>
