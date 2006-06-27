@@ -17,7 +17,7 @@ import org.apache.commons.math.linear.RealMatrix;
  * </pre>
  * whose variance is
  * <pre>
- * Var(b)=MSE*(X'X)^-1, MSE=u'u/(n-p)
+ * Var(b)=MSE*(X'X)^-1, MSE=u'u/(n-k)
  * </pre>
  * 
  * @author Mauro Talevi

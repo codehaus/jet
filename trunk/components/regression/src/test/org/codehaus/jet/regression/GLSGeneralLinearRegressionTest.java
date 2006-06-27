@@ -1,17 +1,15 @@
 package org.codehaus.jet.regression;
 
-import junit.framework.TestCase;
 
 /**
  * 
  * @author Mauro Talevi
  */
-public class GLSGeneralLinearRegressionTest extends TestCase {
+public class GLSGeneralLinearRegressionTest extends AbstractGeneralLinearRegressionTestCase {
 
     private double[] y;
     private double[][] x;
     private double[][] omega;
-    private GeneralLinearRegression regression;
 
     public void setUp(){
         y = new double[]{11.0, 12.0, 13.0, 14.0, 15.0, 16.0};
@@ -29,33 +27,21 @@ public class GLSGeneralLinearRegressionTest extends TestCase {
         omega[3] = new double[]{0, 0, 0, 4.0, 0, 0};
         omega[4] = new double[]{0, 0, 0, 0, 5.0, 0};
         omega[5] = new double[]{0, 0, 0, 0, 0, 6.0};
-        regression = createRegression(y, x, omega);
+        super.setUp();
     }
-    
-    public void testCanCalculateBeta(){
-        double[] beta = regression.getBeta();        
-        assertEquals(x[0].length, beta.length);
-    }
-
-    public void testCanCalculateResiduals(){
-        double[] e = regression.getResiduals();
-        assertEquals(y.length, e.length);
-    }
-    
-    public void testCanCalculateBetaVariance(){
-        double[][] variance = regression.getBetaVariance();
-        assertEquals(x[0].length, variance.length);
-    }
-
-    public void testCanCalculateYVariance(){
-        double variance = regression.getYVariance();
-        assertTrue(variance > 0.0);
-    }
-    
-    private GeneralLinearRegression createRegression(double[] y, double[][] x, double[][] omega) {
+   
+    protected GeneralLinearRegression createRegression() {
         GeneralLinearRegression regression = new GLSGeneralLinearRegression();
         regression.addData(y, x, omega);
         return regression;
+    }
+
+    protected int getNumberOfRegressors() {
+        return x[0].length;
+    }
+
+    protected int getSampleSize() {
+        return y.length;
     }
     
 }
