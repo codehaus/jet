@@ -2,15 +2,15 @@ package org.codehaus.jet.regression.estimators;
 
 import org.apache.commons.math.linear.RealMatrix;
 import org.apache.commons.math.linear.RealMatrixImpl;
-import org.codehaus.jet.regression.GeneralLinearRegression;
+import org.codehaus.jet.regression.MultipleLinearRegressionEstimator;
 
 /**
- * Abstract base class for implementations of GeneralLinearRegression
+ * Abstract base class for implementations of MultipleLinearRegression
  * 
  * @author Mauro Talevi
  */
-public abstract class AbstractGeneralLinearRegression implements
-        GeneralLinearRegression {
+public abstract class AbstractMultipleLinearRegressionEstimator implements
+        MultipleLinearRegressionEstimator {
 
     protected RealMatrix X;
     protected RealMatrix Y;
@@ -33,42 +33,42 @@ public abstract class AbstractGeneralLinearRegression implements
         this.X = toX(x);        
     }
 
-    public double[] getBeta(){
+    public double[] estimateRegressionParameters(){
         RealMatrix b = calculateBeta();
         return b.getColumn(0);
     }    
     
-    public double[] getResiduals(){
+    public double[] estimateResiduals(){
         RealMatrix b = calculateBeta();
         RealMatrix e = Y.subtract(X.multiply(b));
         return e.getColumn(0);
     }
     
-    public double[][] getBetaVariance() {
+    public double[][] estimateRegressionParametersVariance() {
         return calculateBetaVariance().getData();
     }
 
-    public double getYVariance() {
+    public double estimateRegressandVariance() {
         return calculateYVariance();
     }
     
     /**
-     * Calculates the beta of general linear regression in matrix notation
+     * Calculates the beta of multiple linear regression in matrix notation
      */
     protected abstract RealMatrix calculateBeta();    
     
     /**
-     * Calculates the beta variance of general linear regression in matrix notation
+     * Calculates the beta variance of multiple linear regression in matrix notation
      */
     protected abstract RealMatrix calculateBetaVariance();
     
     /**
-     * Calculates the Y variance of general linear regression 
+     * Calculates the Y variance of multiple linear regression 
      */
     protected abstract double calculateYVariance();
 
     /**
-     * Calculates the residual of general linear regression in matrix notation
+     * Calculates the residuals of multiple linear regression in matrix notation
      * <pre>
      * u = y - X*b
      * </pre>
@@ -98,14 +98,5 @@ public abstract class AbstractGeneralLinearRegression implements
         }        
         return new RealMatrixImpl(data);
     }
-
-    protected void printMatrix(String name, RealMatrix m) {
-        System.out.println(name);
-        for (int i = 0; i < m.getRowDimension(); i++) {
-            RealMatrix row = m.getRowMatrix(i);
-            System.out.println(row);
-        }
-    }
-
 
 }

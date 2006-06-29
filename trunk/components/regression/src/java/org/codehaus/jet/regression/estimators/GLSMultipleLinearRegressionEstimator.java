@@ -5,7 +5,7 @@ import org.apache.commons.math.linear.RealMatrixImpl;
 
 
 /**
- * The GLS implementation of the general linear regression
+ * The GLS implementation of the multiple linear regression
  * 
  * GLS assumes a general covariance matrix Omega of the error
  * <pre>
@@ -23,7 +23,7 @@ import org.apache.commons.math.linear.RealMatrixImpl;
  * 
  * @author Mauro Talevi
  */
-public class GLSGeneralLinearRegression extends AbstractGeneralLinearRegression {
+public class GLSMultipleLinearRegressionEstimator extends AbstractMultipleLinearRegressionEstimator {
     
     private RealMatrix Omega;
     

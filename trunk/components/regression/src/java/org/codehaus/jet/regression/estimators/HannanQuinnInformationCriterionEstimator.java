@@ -2,7 +2,7 @@ package org.codehaus.jet.regression.estimators;
 
 import static java.lang.Math.log;
 
-import org.codehaus.jet.regression.GeneralLinearRegression;
+import org.codehaus.jet.regression.MultipleLinearRegressionEstimator;
 
 /**
  * Estimator for the Hannan-Quinn Information Criterion (HQIC)
@@ -19,14 +19,14 @@ public class HannanQuinnInformationCriterionEstimator extends AbstractInformatio
      *  Creates an HannanQuinnInformationCriterionEstimator with default regression estimator
      */
     public HannanQuinnInformationCriterionEstimator() {
-        super();
+        this(createDefaultRegressionEstimator());
     }
 
     /**
      * Creates an HannanQuinnInformationCriterionEstimator with given regression estimator
-     * @param regression the GeneralLinearRegression
+     * @param regression the MultipleLinearRegressionEstimator
      */
-    public HannanQuinnInformationCriterionEstimator(GeneralLinearRegression regression) {
+    public HannanQuinnInformationCriterionEstimator(MultipleLinearRegressionEstimator regression) {
         super(regression);
     }
 

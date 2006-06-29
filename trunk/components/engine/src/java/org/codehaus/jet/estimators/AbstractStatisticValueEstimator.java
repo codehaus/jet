@@ -7,8 +7,8 @@ import static java.lang.Math.sqrt;
 import org.apache.commons.math.MathException;
 import org.apache.commons.math.distribution.NormalDistribution;
 import org.apache.commons.math.distribution.NormalDistributionImpl;
-import org.codehaus.jet.regression.GeneralLinearRegression;
-import org.codehaus.jet.regression.estimators.GLSGeneralLinearRegression;
+import org.codehaus.jet.regression.MultipleLinearRegressionEstimator;
+import org.codehaus.jet.regression.estimators.GLSMultipleLinearRegressionEstimator;
 
 /**
  * Abstract base estimator of critical and p-value 
@@ -17,7 +17,7 @@ import org.codehaus.jet.regression.estimators.GLSGeneralLinearRegression;
  */
 public abstract class AbstractStatisticValueEstimator implements StatisticValueEstimator {
     protected NormalDistribution distribution = new NormalDistributionImpl();
-    protected GeneralLinearRegression gls = new GLSGeneralLinearRegression();
+    protected MultipleLinearRegressionEstimator gls = new GLSMultipleLinearRegressionEstimator();
 
     protected ResponseSurfaceEvaluator responseSurfaceEvaluator;
     private int np;
@@ -234,12 +234,12 @@ public abstract class AbstractStatisticValueEstimator implements StatisticValueE
 
     protected double[] glsRegression(double[] y, double[][] x, double[][] omega) {
         gls.addData(y, x, omega);
-        return gls.getBeta();
+        return gls.estimateRegressionParameters();
     }
     
     protected boolean tTest(double[] gamma, int element, double threshold) {
-        double[][] variance = gls.getBetaVariance();
-        double t = abs(gamma[element-1])/sqrt(gls.getYVariance()*variance[element-1][element-1]);
+        double[][] variance = gls.estimateRegressionParametersVariance();
+        double t = abs(gamma[element-1])/sqrt(gls.estimateRegressandVariance()*variance[element-1][element-1]);
         return ( t > threshold );
     }
     
