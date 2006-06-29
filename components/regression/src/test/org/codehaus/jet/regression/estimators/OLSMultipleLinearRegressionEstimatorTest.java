@@ -1,13 +1,13 @@
 package org.codehaus.jet.regression.estimators;
 
-import org.codehaus.jet.regression.GeneralLinearRegression;
+import org.codehaus.jet.regression.MultipleLinearRegressionEstimator;
 
 
 /**
  * 
  * @author Mauro Talevi
  */
-public class OLSGeneralLinearRegressionTest extends AbstractGeneralLinearRegressionTestCase {
+public class OLSMultipleLinearRegressionEstimatorTest extends AbstractMultipleLinearRegressionEstimatorTestCase {
 
     private double[] y;
     private double[][] x;
@@ -24,8 +24,8 @@ public class OLSGeneralLinearRegressionTest extends AbstractGeneralLinearRegress
         super.setUp();
     }
 
-    protected GeneralLinearRegression createRegression() {
-        GeneralLinearRegression regression = new OLSGeneralLinearRegression();
+    protected MultipleLinearRegressionEstimator createRegressionEstimator() {
+        MultipleLinearRegressionEstimator regression = new OLSMultipleLinearRegressionEstimator();
         regression.addData(y, x, null);
         return regression;
     }

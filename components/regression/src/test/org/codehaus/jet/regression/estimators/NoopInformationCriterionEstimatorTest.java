@@ -1,6 +1,7 @@
 package org.codehaus.jet.regression.estimators;
 
 
+
 /**
  * 
  * @author Mauro Talevi
@@ -31,6 +32,10 @@ public class NoopInformationCriterionEstimatorTest extends AbstractInformationCr
     }
     
     static class NoopInformationCriterionEstimator extends AbstractInformationCriterionEstimator {
+
+        protected NoopInformationCriterionEstimator() {
+            super(new GLSMultipleLinearRegressionEstimator());
+        }
 
         public double estimateIC(int lag) {
             return lag;

@@ -2,7 +2,7 @@ package org.codehaus.jet.regression.estimators;
 
 import static java.lang.Math.log;
 
-import org.codehaus.jet.regression.GeneralLinearRegression;
+import org.codehaus.jet.regression.MultipleLinearRegressionEstimator;
 
 /**
  * Estimator for the Akaike Information Criterion (AIC)
@@ -19,14 +19,14 @@ public class AkaikeInformationCriterionEstimator extends AbstractInformationCrit
      *  Creates an AkaikeInformationCriterionEstimator with default regression estimator
      */
     public AkaikeInformationCriterionEstimator() {
-        super();
+        this(createDefaultRegressionEstimator());
     }
 
     /**
      * Creates an AkaikeInformationCriterionEstimator with given regression estimator
      * @param regression the GeneralLinearRegression
      */
-    public AkaikeInformationCriterionEstimator(GeneralLinearRegression regression) {
+    public AkaikeInformationCriterionEstimator(MultipleLinearRegressionEstimator regression) {
         super(regression);
     }
 

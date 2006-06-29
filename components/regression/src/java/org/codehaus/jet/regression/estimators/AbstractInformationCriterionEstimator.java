@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.codehaus.jet.regression.GeneralLinearRegression;
 import org.codehaus.jet.regression.InformationCriterionEstimator;
+import org.codehaus.jet.regression.MultipleLinearRegressionEstimator;
 
 /**
  * Abstract base class for implementations of InformationCriterionEstimator
@@ -17,22 +17,15 @@ import org.codehaus.jet.regression.InformationCriterionEstimator;
 public abstract class AbstractInformationCriterionEstimator implements
         InformationCriterionEstimator {
 
-    private GeneralLinearRegression regression;
+    private MultipleLinearRegressionEstimator regression;
     
     private double[] y;
-
-    /**
-     * Creates an AbstractInformationCriterionEstimator with default regression estimator
-     */
-    protected AbstractInformationCriterionEstimator() {
-        this(new OLSGeneralLinearRegression());
-    }
 
     /**
      * Creates an AbstractInformationCriterionEstimator with a given regression estimator
      * @param regression the GeneralLinearRegression
      */
-    protected AbstractInformationCriterionEstimator(GeneralLinearRegression regression) {
+    protected AbstractInformationCriterionEstimator(MultipleLinearRegressionEstimator regression) {
         this.regression = regression;
     }
 
@@ -74,7 +67,7 @@ public abstract class AbstractInformationCriterionEstimator implements
      */
     protected double calculateYVariance(int p){      
         regression.addData(toRegressands(y, p), toRegressors(y, p), null);
-        return regression.getYVariance();
+        return regression.estimateRegressandVariance();
     }
 
     /**
@@ -109,4 +102,7 @@ public abstract class AbstractInformationCriterionEstimator implements
         return regressors;
     }
 
+    protected static MultipleLinearRegressionEstimator createDefaultRegressionEstimator(){
+        return new OLSMultipleLinearRegressionEstimator();
+    }
 }

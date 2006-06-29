@@ -4,7 +4,7 @@ import org.apache.commons.math.linear.RealMatrix;
 
 
 /**
- * The OLS implementation of the general linear regression
+ * The OLS implementation of the multiple linear regression
  * 
  * OLS assumes the covariance matrix of the error to be diagonal and with equal variance.
  * <pre>
@@ -22,7 +22,7 @@ import org.apache.commons.math.linear.RealMatrix;
  * 
  * @author Mauro Talevi
  */
-public class OLSGeneralLinearRegression extends AbstractGeneralLinearRegression {
+public class OLSMultipleLinearRegressionEstimator extends AbstractMultipleLinearRegressionEstimator {
     
 
     public void addData(double[] y, double[][] x, double[][] covariance) {

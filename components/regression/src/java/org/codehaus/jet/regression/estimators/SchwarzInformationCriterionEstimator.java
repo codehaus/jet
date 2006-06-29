@@ -2,7 +2,7 @@ package org.codehaus.jet.regression.estimators;
 
 import static java.lang.Math.log;
 
-import org.codehaus.jet.regression.GeneralLinearRegression;
+import org.codehaus.jet.regression.MultipleLinearRegressionEstimator;
 
 /**
  * Estimator for the Schwarz Information Criterion (SIC)
@@ -19,14 +19,14 @@ public class SchwarzInformationCriterionEstimator extends AbstractInformationCri
      *  Creates an SchwarzInformationCriterionEstimator with default regression estimator
      */
     public SchwarzInformationCriterionEstimator() {
-        super();
+        this(createDefaultRegressionEstimator());
     }
 
     /**
      * Creates an SchwarzInformationCriterionEstimator with given regression estimator
-     * @param regression the GeneralLinearRegression
+     * @param regression the MultipleLinearRegressionEstimator
      */
-    public SchwarzInformationCriterionEstimator(GeneralLinearRegression regression) {
+    public SchwarzInformationCriterionEstimator(MultipleLinearRegressionEstimator regression) {
         super(regression);
     }
 
