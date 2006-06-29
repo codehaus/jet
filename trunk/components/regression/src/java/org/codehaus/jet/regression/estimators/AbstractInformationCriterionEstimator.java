@@ -8,7 +8,6 @@ import java.util.Set;
 
 import org.codehaus.jet.regression.GeneralLinearRegression;
 import org.codehaus.jet.regression.InformationCriterionEstimator;
-import org.codehaus.jet.regression.OLSGeneralLinearRegression;
 
 /**
  * Abstract base class for implementations of InformationCriterionEstimator

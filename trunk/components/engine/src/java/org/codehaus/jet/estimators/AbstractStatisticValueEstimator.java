@@ -7,8 +7,8 @@ import static java.lang.Math.sqrt;
 import org.apache.commons.math.MathException;
 import org.apache.commons.math.distribution.NormalDistribution;
 import org.apache.commons.math.distribution.NormalDistributionImpl;
-import org.codehaus.jet.regression.GLSGeneralLinearRegression;
 import org.codehaus.jet.regression.GeneralLinearRegression;
+import org.codehaus.jet.regression.estimators.GLSGeneralLinearRegression;
 
 /**
  * Abstract base estimator of critical and p-value 

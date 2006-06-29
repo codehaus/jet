@@ -1,4 +1,4 @@
-package org.codehaus.jet.regression;
+package org.codehaus.jet.regression.estimators;
 
 import org.apache.commons.math.linear.RealMatrix;
 import org.apache.commons.math.linear.RealMatrixImpl;

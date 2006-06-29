@@ -1,6 +1,8 @@
-package org.codehaus.jet.regression;
+package org.codehaus.jet.regression.estimators;
 
 import junit.framework.TestCase;
+
+import org.codehaus.jet.regression.GeneralLinearRegression;
 
 /**
  * 
