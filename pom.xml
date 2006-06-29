@@ -37,24 +37,38 @@
 	</distributionManagement>
 	<repositories>
 		<repository>
-			<id>codehaus-m2-repository</id>
-			<name>Codehaus Maven 2.x Repository</name>
+			<id>codehaus-repository</id>
+			<name>Codehaus Repository</name>
 			<url>http://repository.codehaus.org</url>
 		</repository>
 		<repository>
-			<snapshots />
-			<id>codehaus-m1-repository</id>
-			<name>Codehaus Maven 1.x Repository</name>
+			<id>codehaus-snapshots-repository</id>
+			<name>Codehaus Snapshots Repository</name>
+			<url>http://snapshots.repository.codehaus.org</url>
+		</repository>
+		<repository>
+			<id>codehaus-dist-repository</id>
+			<name>Codehaus Dist Repository</name>
 			<url>http://dist.codehaus.org</url>
 			<layout>legacy</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>apache-snapshot-repository</id>
+			<name>Apache Snapshot Repository</name>
+			<url>http://people.apache.org/maven-snapshot-repository/</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
-			<snapshots />
-			<id>codehaus-plugin-repository</id>
+			<id>codehaus-plugin-snapshot-repository</id>
 			<name>Codehaus Plugin Snapshot Repository</name>
 			<url>http://snapshots.maven.codehaus.org/maven2/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
 	<build>
@@ -188,9 +202,11 @@
 	<reporting>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-report-plugin</artifactId>
 			</plugin>
 			<plugin>
@@ -307,20 +323,20 @@
 			<artifactId>jfreechart</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.nanocontainer</groupId>
-			<artifactId>nanocontainer</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.nanocontainer.nanowar</groupId>
-			<artifactId>nanocontainer-nanowar</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.picocontainer</groupId>
 			<artifactId>picocontainer</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.nanocontainer</groupId>
+			<artifactId>nanocontainer</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.nanocontainer.nanowar</groupId>
+			<artifactId>nanocontainer-nanowar</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
