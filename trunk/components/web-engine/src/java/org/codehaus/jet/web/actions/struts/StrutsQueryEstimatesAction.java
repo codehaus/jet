@@ -1,7 +1,5 @@
 package org.codehaus.jet.web.actions.struts;
 
-import java.util.Arrays;
-
 import org.apache.struts.util.LabelValueBean;
 import org.codehaus.jet.JetEngine;
 import org.codehaus.jet.JetException;
@@ -74,17 +72,6 @@ public class StrutsQueryEstimatesAction
         }
         return ints;
     }
-
-    private String formatInts(int[] options) {
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < options.length; i++) {
-            sb.append(options[i]);
-            if ( i < options.length - 1 ){
-                sb.append(",");
-            }
-         }
-        return sb.toString();
-    }
     
     /**
      * Validates an estimates query form input 
@@ -92,6 +79,9 @@ public class StrutsQueryEstimatesAction
      * @throws IllegalArgumentException if any form input is not set or valid
      */
     protected void validateEstimatesQuery(StrutsEstimatesQueryForm form) {
+        if ( !validator.isSet(form.getTestName()) ){
+            throw new IllegalArgumentException("Test name must be set");
+        }
     }
 
 
