@@ -1,16 +1,17 @@
-package org.codehaus.jet.regression;
+package org.codehaus.jet.regression.estimators;
+
+import org.codehaus.jet.regression.GeneralLinearRegression;
 
 
 /**
  * 
  * @author Mauro Talevi
  */
-public class GLSGeneralLinearRegressionTest extends AbstractGeneralLinearRegressionTestCase {
+public class OLSGeneralLinearRegressionTest extends AbstractGeneralLinearRegressionTestCase {
 
     private double[] y;
     private double[][] x;
-    private double[][] omega;
-
+    
     public void setUp(){
         y = new double[]{11.0, 12.0, 13.0, 14.0, 15.0, 16.0};
         x = new double[6][];
@@ -20,19 +21,12 @@ public class GLSGeneralLinearRegressionTest extends AbstractGeneralLinearRegress
         x[3] = new double[]{0, 0, 4.0, 0, 0};
         x[4] = new double[]{0, 0, 0, 5.0, 0};
         x[5] = new double[]{0, 0, 0, 0, 6.0};
-        omega = new double[6][];
-        omega[0] = new double[]{1.0, 0, 0, 0, 0, 0};
-        omega[1] = new double[]{0, 2.0, 0, 0, 0, 0};
-        omega[2] = new double[]{0, 0, 3.0, 0, 0, 0};
-        omega[3] = new double[]{0, 0, 0, 4.0, 0, 0};
-        omega[4] = new double[]{0, 0, 0, 0, 5.0, 0};
-        omega[5] = new double[]{0, 0, 0, 0, 0, 6.0};
         super.setUp();
     }
-   
+
     protected GeneralLinearRegression createRegression() {
-        GeneralLinearRegression regression = new GLSGeneralLinearRegression();
-        regression.addData(y, x, omega);
+        GeneralLinearRegression regression = new OLSGeneralLinearRegression();
+        regression.addData(y, x, null);
         return regression;
     }
 
@@ -43,5 +37,5 @@ public class GLSGeneralLinearRegressionTest extends AbstractGeneralLinearRegress
     protected int getSampleSize() {
         return y.length;
     }
-    
+
 }

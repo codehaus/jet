@@ -1,7 +1,8 @@
-package org.codehaus.jet.regression;
+package org.codehaus.jet.regression.estimators;
 
 import org.apache.commons.math.linear.RealMatrix;
 import org.apache.commons.math.linear.RealMatrixImpl;
+import org.codehaus.jet.regression.GeneralLinearRegression;
 
 /**
  * Abstract base class for implementations of GeneralLinearRegression
