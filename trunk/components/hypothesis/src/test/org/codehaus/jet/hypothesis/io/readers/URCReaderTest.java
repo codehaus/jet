@@ -5,9 +5,10 @@ import org.codehaus.jet.hypothesis.io.BetaReader;
 
 
 public class URCReaderTest extends AbstractWeightReaderTestCase {
+
+    private BetaReader reader = new URCReader("mackinnon1996");
     
     public void testBetaAndWeightsCanBeRead() throws Exception {        
-        BetaReader reader = new URCReader("mackinnon1996");
         reader.read(new int[]{1, 0, 1});
         assertBeta(reader.getBeta(), 221, 0, -.38929681e+01, .34781086e+01);
         assertWeights(reader.getWeights(), 221, .33188192e-02, .31382626e-02);
@@ -26,5 +27,39 @@ public class URCReaderTest extends AbstractWeightReaderTestCase {
         assertBeta(reader.getBeta(), 221, 0,  -.42572121e+02,  .41292948e+01);
         assertWeights(reader.getWeights(), 221, .81241944e-01, .11234018e-01);
     }
+    
+    public void testInputParamsAreValidated() throws Exception {        
+        try {
+            reader.read(new int[] { 0, 0, 0 });
+        } catch ( IllegalArgumentException e) {
+            assertEquals("integrated variables must be an integer between 1 and 12", e.getMessage());
+        }
+        try {
+            reader.read(new int[] { 13, 0, 0 });
+        } catch ( IllegalArgumentException e) {
+            assertEquals("integrated variables must be an integer between 1 and 12", e.getMessage());
+        }
+        try {
+            reader.read(new int[] { 1, -1, 0 });
+        } catch ( IllegalArgumentException e) {
+            assertEquals("regression variables must be an integer between 0 and 3", e.getMessage());
+        }
+        try {
+            reader.read(new int[] { 1, 4, 0 });
+        } catch ( IllegalArgumentException e) {
+            assertEquals("regression variables must be an integer between 0 and 3", e.getMessage());
+        }
+        try {
+            reader.read(new int[] { 1, 0, 0 });
+        } catch ( IllegalArgumentException e) {
+            assertEquals("test type must be an integer between 1 and 2", e.getMessage());
+        }
+        try {
+            reader.read(new int[] { 1, 0, 3 });
+        } catch ( IllegalArgumentException e) {
+            assertEquals("test type must be an integer between 1 and 2", e.getMessage());
+        }
+    }
+    
     
 }

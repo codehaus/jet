@@ -22,7 +22,6 @@ public class URCReader extends AbstractBetaReader {
         switch ( testType ){
         case 1: start = regressionVariables*(DIMENSION+1)+1; break;
         case 2: start = 4*(DIMENSION+1)+1; break;
-        default: throw new IllegalArgumentException("Invalid testType "+testType);
         }
         beta = new double[DIMENSION][];
         weights = new double[DIMENSION];

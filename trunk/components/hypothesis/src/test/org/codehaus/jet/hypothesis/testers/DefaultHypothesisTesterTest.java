@@ -1,5 +1,7 @@
 package org.codehaus.jet.hypothesis.testers;
 
+import java.util.Arrays;
+
 import junit.framework.TestCase;
 
 import org.codehaus.jet.hypothesis.HypothesisException;
@@ -68,6 +70,10 @@ public class DefaultHypothesisTesterTest extends TestCase {
         assertPValueParamsInvalid(DefaultHypothesisTester.URC_TEST, 1, 0, 1, 0.01, -1);
     }
 
+    public void testTestNamesCanBeRetrieved() {
+        assertEquals(Arrays.toString(DefaultHypothesisTester.SUPPORTED_TEST_NAMES), Arrays.toString(tester.getTestNames()));
+    }
+    
     private void assertCriticalValue(double expected, String testName, int integratedVariables, int regressionVariables, 
             int testType, double level, int sampleSize) throws Exception{
         assertDouble(expected, tester.estimateCriticalValue(testName, new int[]{integratedVariables, regressionVariables,
