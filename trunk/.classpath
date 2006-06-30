@@ -2,8 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="components/regression/src/java"/>
 	<classpathentry kind="src" path="components/regression/src/test"/>
-	<classpathentry kind="src" path="components/cointegration/src/java"/>
-	<classpathentry kind="src" path="components/cointegration/src/test"/>
+	<classpathentry kind="src" path="components/hypothesis/src/java"/>
+	<classpathentry kind="src" path="components/hypothesis/src/test"/>
 	<classpathentry kind="src" path="components/engine/src/java"/>
 	<classpathentry kind="src" path="components/engine/src/test"/>
 	<classpathentry kind="src" path="components/web/src/java"/>
