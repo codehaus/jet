@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><project>
+  <parent>
+    <artifactId>jet-parent</artifactId>
+    <groupId>org.codehaus.jet</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>jet-cointegration</artifactId>
+  <name>JET Cointegration</name>
+  <version>1.0-SNAPSHOT</version>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>org.codehaus.jet.Main</mainClass>
+              <packageName>org.codehaus.jet</packageName>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>${pom.groupId}</groupId>
+      <artifactId>jet-regression</artifactId>
+      <version>${pom.version}</version>
+    </dependency>
+  </dependencies>
+</project>
