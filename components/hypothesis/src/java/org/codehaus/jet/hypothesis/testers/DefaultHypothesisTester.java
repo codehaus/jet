@@ -29,8 +29,8 @@ public class DefaultHypothesisTester implements HypothesisTester {
     
     private static final String PARAMETERS = "[testName={0}, options={1}, level={2}, sampleSize={3}]";
 
-    private static final String[] SUPPORTED_TEST_NAMES = new String[]{URC_TEST, ECM_TEST, JOHANSEN_TEST};
-    private static final String[] ASYMPTOTIC_TEST_NAMES = new String[]{LRC_TEST, JOHANSEN_TEST};
+    static final String[] SUPPORTED_TEST_NAMES = new String[]{URC_TEST, ECM_TEST, JOHANSEN_TEST};
+    static final String[] ASYMPTOTIC_TEST_NAMES = new String[]{LRC_TEST, JOHANSEN_TEST};
 
     private RejectionValueEstimatorProvider estimatorProvider;
     private ReaderProvider readerProvider;

@@ -7,9 +7,10 @@ import org.codehaus.jet.hypothesis.io.BetaReader;
  * @author Mauro Talevi
  */
 public class ECMReaderTest extends AbstractWeightReaderTestCase {
+
+    private BetaReader reader = new ECMReader("em2002");
     
     public void testBetaAndWeightsCanBeRead() throws Exception {        
-        BetaReader reader = new ECMReader("em2002");
         reader.read(new int[]{1, 0, 1});
         assertBeta(reader.getBeta(), 221, 0, -0.38836757E+01, 0.34765811E+01);
         assertWeights(reader.getWeights(), 221, 0.36431605E-02, 0.38811112E-02);
@@ -23,5 +24,29 @@ public class ECMReaderTest extends AbstractWeightReaderTestCase {
         assertWeights(reader.getWeights(), 221, 0.33755149E-02, 0.40881553E-02);
         
     }
+    
+    public void testInputParamsAreValidated() throws Exception {        
+        try {
+            reader.read(new int[] { 0, 0 });
+        } catch ( IllegalArgumentException e) {
+            assertEquals("integrated variables must be an integer between 1 and 12", e.getMessage());
+        }
+        try {
+            reader.read(new int[] { 13, 0 });
+        } catch ( IllegalArgumentException e) {
+            assertEquals("integrated variables must be an integer between 1 and 12", e.getMessage());
+        }
+        try {
+            reader.read(new int[] { 1, -1 });
+        } catch ( IllegalArgumentException e) {
+            assertEquals("regression variables must be an integer between 0 and 3", e.getMessage());
+        }
+        try {
+            reader.read(new int[] { 1, 4 });
+        } catch ( IllegalArgumentException e) {
+            assertEquals("regression variables must be an integer between 0 and 3", e.getMessage());
+        }
+    }
+    
     
 }

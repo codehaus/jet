@@ -23,7 +23,6 @@ public class LRCReader extends AbstractCriticalValueReader {
         switch ( testType ){
         case 1: start = regressionVariables*(DIMENSION+1)+1; break;
         case 2: start = 5*(DIMENSION+1)+1; break;
-        default: throw new IllegalArgumentException("Invalid testType "+testType);
         }
         values = new double[DIMENSION];
         weights = new double[DIMENSION];
