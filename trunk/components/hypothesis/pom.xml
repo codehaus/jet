@@ -5,8 +5,8 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>jet-cointegration</artifactId>
-  <name>JET Cointegration</name>
+  <artifactId>jet-hypothesis</artifactId>
+  <name>JET Hypothesis</name>
   <version>1.0-SNAPSHOT</version>
   <build>
     <plugins>
