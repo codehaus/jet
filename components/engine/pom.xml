@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><project>
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
   <parent>
     <artifactId>jet-parent</artifactId>
     <groupId>org.codehaus.jet</groupId>
@@ -8,25 +9,15 @@
   <artifactId>jet-engine</artifactId>
   <name>JET Engine</name>
   <version>1.0-SNAPSHOT</version>
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifest>
-              <mainClass>org.codehaus.jet.Main</mainClass>
-              <packageName>org.codehaus.jet</packageName>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
   <dependencies>
     <dependency>
       <groupId>${pom.groupId}</groupId>
       <artifactId>jet-regression</artifactId>
+      <version>${pom.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>${pom.groupId}</groupId>
+      <artifactId>jet-hypothesis</artifactId>
       <version>${pom.version}</version>
     </dependency>
   </dependencies>

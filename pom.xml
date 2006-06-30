@@ -9,6 +9,7 @@
 	<ciManagement />
 	<modules>
 		<module>components/regression</module>
+		<module>components/hypothesis</module>
 		<module>components/engine</module>
 		<module>components/web</module>
 		<module>components/web-engine</module>
