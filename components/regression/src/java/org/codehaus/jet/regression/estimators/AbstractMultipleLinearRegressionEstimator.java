@@ -27,10 +27,10 @@ public abstract class AbstractMultipleLinearRegressionEstimator implements
     /**
      * Adds x sample data
      * 
-     * @param x the [n,p-1] array representing the x sample
+     * @param x the [n,p] array representing the x sample
      */
     protected void addXSampleData(double[][] x){
-        this.X = toX(x);        
+        this.X = new RealMatrixImpl(x);
     }
 
     public double[] estimateRegressionParameters(){
@@ -79,24 +79,5 @@ public abstract class AbstractMultipleLinearRegressionEstimator implements
         RealMatrix b = calculateBeta();
         return Y.subtract(X.multiply(b));
     }
-
-    /**
-     * Creates the X matrix [n,p] = [[1][x]], where [x] is a [n,p-1] array
-     * 
-     * @param x the [n,p-1] array of values
-     * @return A [n,p] RealMatrix 
-     */
-    protected RealMatrix toX(double[][] x) {
-        int n = x.length;
-        int p = x[0].length;
-        double[][] data = new double[n][p];
-        for (int i = 0; i < n; i++) {
-            data[i][0] = 1.0d;
-            for (int j = 0; j < p - 1; j++) {
-                data[i][j+1] = x[i][j];
-            }
-        }        
-        return new RealMatrixImpl(data);
-    }
-
+    
 }
