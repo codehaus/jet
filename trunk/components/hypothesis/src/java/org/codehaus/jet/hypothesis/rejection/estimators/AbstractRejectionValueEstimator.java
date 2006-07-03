@@ -7,8 +7,8 @@ import static java.lang.Math.sqrt;
 import org.apache.commons.math.MathException;
 import org.apache.commons.math.distribution.NormalDistribution;
 import org.apache.commons.math.distribution.NormalDistributionImpl;
-import org.codehaus.jet.hypothesis.rejection.ResponseSurfaceEvaluator;
 import org.codehaus.jet.hypothesis.rejection.RejectionValueEstimator;
+import org.codehaus.jet.hypothesis.rejection.ResponseSurfaceEvaluator;
 import org.codehaus.jet.regression.MultipleLinearRegressionEstimator;
 import org.codehaus.jet.regression.estimators.GLSMultipleLinearRegressionEstimator;
 
@@ -152,9 +152,12 @@ public abstract class AbstractRejectionValueEstimator implements RejectionValueE
         double[][] x = new double[np][nvar];
         for (int i = 0; i < np; i++) {
             int middleI = toMiddleIndex(min, np, i);
-            x[i][0] = values[middleI];
-            x[i][1] = x[i][0]*values[middleI];
-            x[i][2] = x[i][1]*values[middleI];
+            x[i][0] = 1.0d;
+            x[i][1] = values[middleI];
+            x[i][2] = x[i][1] * values[middleI];
+            if ( nvar > 3 ){
+                x[i][3] = x[i][2] * values[middleI];
+            }
         }
         return x;
     }
@@ -166,9 +169,12 @@ public abstract class AbstractRejectionValueEstimator implements RejectionValueE
             if ( upper ){
                 tailI = toUpperIndex(i);
             }
-            x[i][0] = values[tailI];
-            x[i][1] = x[i][0]*values[tailI];
+            x[i][0] = 1.0d;
+            x[i][1] = values[tailI];
             x[i][2] = x[i][1]*values[tailI];
+            if ( nvar > 3 ){
+                x[i][3] = x[i][2]*values[tailI];
+            }
         }
         return x;
     }
