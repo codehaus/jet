@@ -1,46 +1,58 @@
 package org.codehaus.jet.hypothesis.rejection.evaluators;
 
 /**
- * Evaluator of response surface for specified betas and sample size.
- * <pre>
- * q(T)=b0 + b1/T + b2/T^2 + b3/T^3 + e
- * </pre>
+ * Implementations of the ResponseSurfaceEvaluator for ECM tests.
+ * 
  * @author Mauro Talevi
  */
 public class ECMResponseSurfaceEvaluator extends AbstractResponseSurfaceEvaluator {
 
-    public double evaluate(double[] beta, int sampleSize, int[] params) {
+    public double evaluate(double[] beta, int T, int[] params) {
+        validateParams(beta, T, params);
         double value = 0;
         int model = params[0];
         int nreg = params[1];
         int nz = params[2];
-        if (sampleSize == 0) {
+        if (T == 0) {
             value = beta[0];
             return value;
         }
         switch (model) {
         case 2:
-            value = powerSeries(beta, calculateX(sampleSize, 0), 3);
+            value = powerSeries(beta, calculateX(T, 0), 3);
             break;
         case 3:
-            value = powerSeries(beta, calculateX(sampleSize, 0), 4);
+            value = powerSeries(beta, calculateX(T, 0), 4);
             break;
         case 4:
-            value = powerSeries(beta, calculateX(sampleSize, nreg), 3);
+            value = powerSeries(beta, calculateX(T, nreg), 3);
             break;
         case 5:
-            value = powerSeries(beta, calculateX(sampleSize, nreg), 4);
+            value = powerSeries(beta, calculateX(T, nreg), 4);
             break;
         case 6:
-            value = powerSeries(beta, calculateX(sampleSize, nreg, nz), 3);
+            value = powerSeries(beta, calculateX(T, nreg + nz + 1), 3);
             break;
         case 7:
-            value = powerSeries(beta, calculateX(sampleSize, nreg, nz), 4);
+            value = powerSeries(beta, calculateX(T, nreg + nz + 1), 4);
             break;
-        default:
-            throw new IllegalArgumentException("Invalid model type "+model);
         }
         return value;
     }
+
+    protected void validateParams(double[] beta, int T, int[] params) {
+        if ( beta.length < 4 ){
+            throw new IllegalArgumentException("beta must be have at least 4 coefficients");
+        }
+        if ( T < 0 ){
+            throw new IllegalArgumentException("sample size must be a non-negative integer");
+        }
+        if ( params.length < 3 ){
+            throw new IllegalArgumentException("params must contain at least 3 parameters");
+        }
+        if ( params[0] < 2 || params[0] > 7){
+            throw new IllegalArgumentException("first parameter must be an integer between 2 and 7");
+        }
+    }    
 
 }
