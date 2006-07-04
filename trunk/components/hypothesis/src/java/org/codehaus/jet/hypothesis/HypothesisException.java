@@ -5,6 +5,7 @@ package org.codehaus.jet.hypothesis;
  * 
  * @author Mauro Talevi
  */
+@SuppressWarnings("serial")
 public class HypothesisException extends Exception {
 
     /**

@@ -168,6 +168,7 @@ public class StrutsNoopActionTest extends MockObjectTestCase {
         assertEquals(StrutsNoopAction.EMPTY, action.getMode());
     }
     
+    @SuppressWarnings("serial")
     private ActionMapping createActionMappingWithForward() {
         ActionMapping mapping = new ActionMapping() {
             public ActionForward findForward(String name){
@@ -177,6 +178,7 @@ public class StrutsNoopActionTest extends MockObjectTestCase {
         return mapping;
     }
 
+    @SuppressWarnings("serial")
     private ActionMapping createActionMappingWithNullForward() {
         ActionMapping mapping = new ActionMapping() {
             public ActionForward findForward(String name){
@@ -186,6 +188,7 @@ public class StrutsNoopActionTest extends MockObjectTestCase {
         return mapping;
     }
     
+    @SuppressWarnings("serial")
     private ActionMapping createActionMappingWithParameter(final String mode) {
         ActionMapping mapping = new ActionMapping() {
             public ActionForward findForward(String name){

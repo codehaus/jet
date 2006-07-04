@@ -7,6 +7,7 @@ import org.apache.struts.util.LabelValueBean;
  * 
  * @author Mauro Talevi
  */
+@SuppressWarnings("serial")
 public class StrutsEstimatesQueryForm extends StrutsJetForm {
 
     private LabelValueBean[] testNames;

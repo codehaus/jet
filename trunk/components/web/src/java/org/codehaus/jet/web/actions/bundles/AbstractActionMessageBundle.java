@@ -18,10 +18,10 @@ import org.codehaus.jet.web.actions.ActionMessageBundle;
  */
 public abstract class AbstractActionMessageBundle implements ActionMessageBundle {
 
-    private Collection messages;
+    private Collection<String> messages;
 
     public void newMessages() {
-        this.messages = new ArrayList();
+        this.messages = new ArrayList<String>();
     }
 
     public void addMessage(String message, boolean asKey) {
@@ -45,7 +45,8 @@ public abstract class AbstractActionMessageBundle implements ActionMessageBundle
         }        
     }
 
-    public Collection getMessages() {
+    @SuppressWarnings("unchecked")
+    public Collection<String> getMessages() {
         if (messages == null) {
             return Collections.EMPTY_LIST;
         }

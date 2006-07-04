@@ -35,7 +35,7 @@ public abstract class AbstractReader  {
     
     protected String[] toLines(Reader resource) throws IOException {
         BufferedReader br = new BufferedReader(resource);
-        List lines = new ArrayList();
+        List<String> lines = new ArrayList<String>();
         String line = br.readLine();
         while ( line != null) {
             lines.add(line);

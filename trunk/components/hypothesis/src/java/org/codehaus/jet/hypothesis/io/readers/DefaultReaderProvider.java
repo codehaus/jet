@@ -12,7 +12,7 @@ import org.codehaus.jet.hypothesis.testers.DefaultHypothesisTester;
 
 public class DefaultReaderProvider implements ReaderProvider {
 
-    private Map readers = new HashMap();
+    private Map<String, AbstractReader> readers = new HashMap<String, AbstractReader>();
     
     public DefaultReaderProvider(){
         readers.put(DefaultHypothesisTester.ECM_TEST, new ECMReader("em2002"));

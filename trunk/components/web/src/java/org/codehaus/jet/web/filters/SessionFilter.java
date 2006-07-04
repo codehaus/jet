@@ -24,7 +24,7 @@ public class SessionFilter implements Filter {
     /** The URL to redirect to in case there is no session active */
     private String redirectURL;
     /** The pathsL to ignore */
-    protected Collection ignorablePaths = new ArrayList();
+    protected Collection<String> ignorablePaths = new ArrayList<String>();
 
     public void init(FilterConfig filterConfig) throws ServletException {        
         this.redirectURL = filterConfig.getInitParameter("redirectURL");        
