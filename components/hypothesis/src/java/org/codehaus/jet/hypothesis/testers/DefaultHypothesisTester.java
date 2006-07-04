@@ -54,13 +54,13 @@ public class DefaultHypothesisTester implements HypothesisTester {
                 CriticalValueReader reader = readerProvider.getCriticalValueReader(testName);
                 reader.read(options);
                 RejectionValueEstimator estimator = estimatorProvider.getCriticalValueEstimator(testName);
-                return estimator.estimateValue(probabilityReader.getProbs(), probabilityReader.getNorms(),
+                return estimator.estimateAsymptoticValue(probabilityReader.getNorms(), probabilityReader.getProbs(),
                         reader.getWeights(), reader.getCriticalValues(), level);
             } else {
                 BetaReader reader = readerProvider.getBetaReader(testName);
                 reader.read(options);
                 RejectionValueEstimator estimator = estimatorProvider.getCriticalValueEstimator(testName);
-                return estimator.estimateValue(probabilityReader.getProbs(), probabilityReader.getNorms(),
+                return estimator.estimateValue(probabilityReader.getNorms(), probabilityReader.getProbs(),
                         reader.getWeights(), reader.getBeta(), 
                         sampleSize, reader.getParams(), level);                
             }
@@ -78,13 +78,13 @@ public class DefaultHypothesisTester implements HypothesisTester {
                 CriticalValueReader reader = readerProvider.getCriticalValueReader(testName);
                 reader.read(options);
                 RejectionValueEstimator estimator = estimatorProvider.getPValueEstimator(testName);
-                return estimator.estimateValue(probabilityReader.getProbs(), probabilityReader.getNorms(),
+                return estimator.estimateAsymptoticValue(probabilityReader.getNorms(), probabilityReader.getProbs(),
                         reader.getWeights(), reader.getCriticalValues(), level);
             } else {
                 BetaReader reader = readerProvider.getBetaReader(testName);
                 reader.read(options);
                 RejectionValueEstimator estimator = estimatorProvider.getPValueEstimator(testName);
-                return estimator.estimateValue(probabilityReader.getProbs(), probabilityReader.getNorms(),
+                return estimator.estimateValue(probabilityReader.getNorms(), probabilityReader.getProbs(),
                         reader.getWeights(), reader.getBeta(), 
                         sampleSize, reader.getParams(), level);                
             }

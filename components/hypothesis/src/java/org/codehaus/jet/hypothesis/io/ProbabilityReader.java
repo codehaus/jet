@@ -5,6 +5,11 @@ import java.util.Scanner;
 
 import org.codehaus.jet.hypothesis.io.readers.AbstractReader;
 
+/**
+ * Reader of probabilities required to construct the covariance matrix of the GLS regression
+ * 
+ * @author Mauro Talevi
+ */
 public class ProbabilityReader extends AbstractReader {
     
     private static final String RESOURCE_PATH = "org/codehaus/jet/hypothesis/io/probs.tab";    

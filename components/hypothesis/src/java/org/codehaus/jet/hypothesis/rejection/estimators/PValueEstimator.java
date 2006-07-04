@@ -3,51 +3,47 @@ package org.codehaus.jet.hypothesis.rejection.estimators;
 import org.codehaus.jet.hypothesis.rejection.ResponseSurfaceEvaluator;
 
 /**
- * Estimator of p-value for unit roots and cointegration tests, as detailed in 
- * <a href="http://qed.econ.queensu.ca/jae/1996-v11.6/mackinnon">
- * James G. MacKinnon, "Numerical Distribution Functions for Unit Root and Cointegration Tests", 
- * Journal of Applied Econometrics, Vol. 11, No. 6, 1996, 601-618
- * </a> and 
- * <a href="http://qed.econ.queensu.ca/faculty/mackinnon/ecmtest">
- * Neil R. Ericsson and James G. MacKinnon (2002) "Distributions of Error  Correction Tests for Cointegration", 
- * Econometrics Journal, 5, 2002, 285-318
- * </a>
- *
+ * Estimator of p-value for unit roots and cointegration tests.
+ * 
  * @author Mauro Talevi
+ * @see RejectionValueEstimator
  */
 public class PValueEstimator extends AbstractRejectionValueEstimator {
 
-
     /**
-     * @param np
-     * @param threshold
+     * Creates a PValueEstimator
+     * @param numberOfPoints the number of points used in the regression
+     * @param threshold the threshold used for the t-test
      */
-    public PValueEstimator(int np, double threshold) {
-        super(np, threshold);
+    public PValueEstimator(int numberOfPoints, double threshold) {
+        super(numberOfPoints, threshold);
     }
+        
     /**
-     * @param responseSurfaceEvaluator
-     * @param np
-     * @param threshold
+     * Creates a PValueEstimator
+     *
+     * @param responseSurfaceEvaluator the ResponseSurfaceEvaluator
+     * @param numberOfPoints the number of points used in the regression
+     * @param threshold the threshold used for the t-test
      */
-    public PValueEstimator(ResponseSurfaceEvaluator responseSurfaceEvaluator, int np, double threshold) {
-        super(responseSurfaceEvaluator, np, threshold);
+    public PValueEstimator(ResponseSurfaceEvaluator responseSurfaceEvaluator, int numberOfPoints, double threshold) {
+        super(responseSurfaceEvaluator, numberOfPoints, threshold);
     }
-
-    public double estimateValue(double[] probs, double[] norm, double[] weights, double[][]beta,
+    
+    public double estimateValue(double[] norms, double[] probs, double[] weights, double[][]beta,
             int sampleSize, int[] params, double level){
         validateParams(sampleSize, level);
         double[] criticalValues = toCriticalValues(beta, sampleSize, params);
-        return estimateValue(probs, norm, weights, criticalValues, level);
+        return estimateAsymptoticValue(norms, probs, weights, criticalValues, level);
     }
     
-    public double estimateValue(double[] probs, double[] norm, double[] weights, double[] criticalValues,
+    public double estimateAsymptoticValue(double[] norms, double[] probs, double[] weights, double[] criticalValues,
             double level){
         int min = calculateMinimizingIndex(criticalValues, level, 0.0d);
-        int np = getNp();
+        int np = getNumberOfPoints();
         int nvar = 4;
         double[] gamma = glsRegression(
-                toYSample(norm, min, np),
+                toYSample(norms, min, np),
                 toXSample(criticalValues, min, np, nvar),
                 toCovariance(probs, weights, min, np));
         double threshold = getThreshold();
@@ -56,7 +52,7 @@ public class PValueEstimator extends AbstractRejectionValueEstimator {
         } else {
             nvar = 3;
             gamma = glsRegression(
-                    toYSample(norm, min, np),
+                    toYSample(norms, min, np),
                     toXSample(criticalValues, min, np, nvar),
                     toCovariance(probs, weights, min, np));
             return cumulativeNormal(powerSeries(gamma, level, nvar));

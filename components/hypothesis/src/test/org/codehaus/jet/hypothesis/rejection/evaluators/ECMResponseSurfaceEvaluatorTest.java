@@ -23,8 +23,8 @@ public class ECMResponseSurfaceEvaluatorTest extends AbstractResponseSurfaceEval
     }
 
     public void testCanValidateParameters(){
-        assertInvalidParams("beta must be have at least 4 coefficients", 
-                new double[]{1.0, 0.9, 0.8}, 0, new int[]{2, 3, 4});
+        assertInvalidParams("beta must be have at least 3 coefficients", 
+                new double[]{1.0, 0.9}, 0, new int[]{2, 3, 4});
         assertInvalidParams("sample size must be a non-negative integer", 
                 new double[]{1.0, 0.9, 0.8, 0.7}, -1, new int[]{2, 3, 4});
         assertInvalidParams("params must contain at least 3 parameters", 
