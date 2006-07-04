@@ -7,6 +7,7 @@ import org.apache.struts.action.ActionForm;
  * 
  * @author Mauro Talevi
  */
+@SuppressWarnings("serial")
 public class StrutsJetForm extends ActionForm {
 
     public static final String CANCEL = "cancel";

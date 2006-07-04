@@ -5,6 +5,7 @@ package org.codehaus.jet;
  * 
  * @author Mauro Talevi
  */
+@SuppressWarnings("serial")
 public class JetException extends Exception {
 
     /**

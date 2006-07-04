@@ -33,6 +33,7 @@ public abstract class AbstractInformationCriterionEstimator implements
         this.y = y;
     }
 
+    @SuppressWarnings("unchecked")
     public int minimiseIC(int minLag, int maxLag) {
         // calculate IC for the given lag interval
         Map<Integer,Double> map = new HashMap<Integer,Double>();
@@ -45,9 +46,9 @@ public abstract class AbstractInformationCriterionEstimator implements
         Map.Entry[] entries = (Map.Entry[]) set.toArray(new Map.Entry[set
                 .size()]);
         Arrays.sort(entries, new Comparator() {
-            public int compare(Object o1, Object o2) {
-                Object v1 = ((Map.Entry) o1).getValue();
-                Object v2 = ((Map.Entry) o2).getValue();
+            public int compare(final Object o1, final Object o2) {
+                final Object v1 = ((Map.Entry) o1).getValue();
+                final Object v2 = ((Map.Entry) o2).getValue();
                 return ((Comparable) v1).compareTo(v2);
             }
         });

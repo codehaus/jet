@@ -46,6 +46,7 @@ public abstract class AbstractStrutsActionTestCase extends MockObjectTestCase {
         return (HttpServletResponse)mock.proxy();
     }
 
+    @SuppressWarnings("serial")
     protected ActionMapping createActionMappingWithForward() {
         ActionMapping mapping = new ActionMapping() {
             public ActionForward findForward(String name){
@@ -56,6 +57,7 @@ public abstract class AbstractStrutsActionTestCase extends MockObjectTestCase {
     }
 
 
+    @SuppressWarnings("serial")
     protected ActionMapping createActionMappingWithForwardAndParameter(final String param) {
         ActionMapping mapping = new ActionMapping() {
             public ActionForward findForward(String name){

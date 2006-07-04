@@ -15,8 +15,8 @@ import org.codehaus.jet.hypothesis.testers.DefaultHypothesisTester;
  */
 public class DefaultEstimatorProvider implements RejectionValueEstimatorProvider {
     
-    private Map criticalValueEstimators = new HashMap();
-    private Map pValueEstimators = new HashMap();
+    private Map<String, CriticalValueEstimator> criticalValueEstimators = new HashMap<String, CriticalValueEstimator>();
+    private Map<String, PValueEstimator> pValueEstimators = new HashMap<String, PValueEstimator>();
     
     public DefaultEstimatorProvider(){
         criticalValueEstimators.put(DefaultHypothesisTester.ECM_TEST, new CriticalValueEstimator(new ECMResponseSurfaceEvaluator(), 11, 2.0));

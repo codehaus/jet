@@ -82,8 +82,9 @@ public class SessionWriter {
      * @param session the HttpSession 
      * @param imagePath the image path
      */
+    @SuppressWarnings("unchecked")
     private void addImagePathToSessionList(HttpSession session, String imagePath) {
-        List images = (List)session.getAttribute(IMAGES_LIST);
+        List<String> images = (List<String>)session.getAttribute(IMAGES_LIST);
         if ( images != null ){
             images.add(imagePath);
             monitor.imagePathAdded(imagePath);
