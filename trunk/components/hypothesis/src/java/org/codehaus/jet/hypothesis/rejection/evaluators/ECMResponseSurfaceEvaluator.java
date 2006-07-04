@@ -41,8 +41,8 @@ public class ECMResponseSurfaceEvaluator extends AbstractResponseSurfaceEvaluato
     }
 
     protected void validateParams(double[] beta, int T, int[] params) {
-        if ( beta.length < 4 ){
-            throw new IllegalArgumentException("beta must be have at least 4 coefficients");
+        if ( beta.length < 3 ){
+            throw new IllegalArgumentException("beta must be have at least 3 coefficients");
         }
         if ( T < 0 ){
             throw new IllegalArgumentException("sample size must be a non-negative integer");

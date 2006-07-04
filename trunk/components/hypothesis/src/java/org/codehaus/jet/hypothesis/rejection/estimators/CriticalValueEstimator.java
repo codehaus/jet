@@ -5,47 +5,43 @@ import org.codehaus.jet.hypothesis.rejection.ResponseSurfaceEvaluator;
 
 
 /**
- * Estimator of critical value for unit roots and cointegration tests, as detailed in 
- * <a href="http://qed.econ.queensu.ca/jae/1996-v11.6/mackinnon">
- * James G. MacKinnon, "Numerical Distribution Functions for Unit Root and Cointegration Tests", 
- * Journal of Applied Econometrics, Vol. 11, No. 6, 1996, 601-618
- * </a> and 
- * <a href="http://qed.econ.queensu.ca/faculty/mackinnon/ecmtest">
- * Neil R. Ericsson and James G. MacKinnon (2002) "Distributions of Error  Correction Tests for Cointegration", 
- * Econometrics Journal, 5, 2002, 285-318
- * </a>
+ * Estimator of critical value for unit roots and cointegration tests.
  * 
  * @author Mauro Talevi
+ * @see RejectionValueEstimator
  */
 public class CriticalValueEstimator extends AbstractRejectionValueEstimator {
    
     
     /**
-     * @param np
-     * @param threshold
+     * Creates a CriticalValueEstimator
+     * @param numberOfPoints the number of points used in the regression
+     * @param threshold the threshold used for the t-test
      */
-    public CriticalValueEstimator(int np, double threshold) {
-        super(np, threshold);
+    public CriticalValueEstimator(int numberOfPoints, double threshold) {
+        super(numberOfPoints, threshold);
     }
         
     /**
-     * @param responseSurfaceEvaluator
-     * @param np
-     * @param threshold
+     * Creates a CriticalValueEstimator
+     *
+     * @param responseSurfaceEvaluator the ResponseSurfaceEvaluator
+     * @param numberOfPoints the number of points used in the regression
+     * @param threshold the threshold used for the t-test
      */
-    public CriticalValueEstimator(ResponseSurfaceEvaluator responseSurfaceEvaluator, int np, double threshold) {
-        super(responseSurfaceEvaluator, np, threshold);
+    public CriticalValueEstimator(ResponseSurfaceEvaluator responseSurfaceEvaluator, int numberOfPoints, double threshold) {
+        super(responseSurfaceEvaluator, numberOfPoints, threshold);
     }
     
-    public double estimateValue(double[] probs, double[] norm, double[] weights, double[][]beta,
+    public double estimateValue(double[] norms, double[] probs, double[] weights, double[][]beta,
             int sampleSize, int[] params, double level){
         validateParams(sampleSize, level);
         int min = calculateMinimizingIndex(probs, level, 1e-6);
-        int np = getNp();
+        int np = getNumberOfPoints();
         int nvar = 4;
         double[] gamma = glsRegression(
                 toYSample(beta, min, np, sampleSize, params),
-                toXSample(norm, min, np, nvar),
+                toXSample(norms, min, np, nvar),
                 toCovariance(probs, weights, min, np));
         double threshold = getThreshold();
         if ( tTest(gamma, nvar, threshold) ){
@@ -54,20 +50,20 @@ public class CriticalValueEstimator extends AbstractRejectionValueEstimator {
             nvar = 3;
             gamma = glsRegression(
                     toYSample(beta, min, np, sampleSize, params),
-                    toXSample(norm, min, np, nvar),
+                    toXSample(norms, min, np, nvar),
                     toCovariance(probs, weights, min, np));
             return powerSeries(gamma, inverseCumulativeNormal(level), nvar);            
         }
     }
 
-    public double estimateValue(double[] probs, double[] norm, double[] weights, double[] criticalValues,
+    public double estimateAsymptoticValue(double[] norms, double[] probs, double[] weights, double[] criticalValues,
             double level){
         int min = calculateMinimizingIndex(probs, level, 1e-6);
-        int np = getNp();
+        int np = getNumberOfPoints();
         int nvar = 4;        
         double[] gamma = glsRegression(
                 toYSample(criticalValues, min, np),
-                toXSample(norm, min, np, nvar),
+                toXSample(norms, min, np, nvar),
                 toCovariance(probs, weights, min, np));
         double threshold = getThreshold();
         if ( tTest(gamma, nvar, threshold) ){
@@ -76,7 +72,7 @@ public class CriticalValueEstimator extends AbstractRejectionValueEstimator {
             nvar = 3;
             gamma = glsRegression(
                     toYSample(criticalValues, min, np),
-                    toXSample(norm, min, np, nvar),
+                    toXSample(norms, min, np, nvar),
                     toCovariance(probs, weights, min, np));
             return powerSeries(gamma, inverseCumulativeNormal(level), nvar);            
         }

@@ -13,34 +13,39 @@ import org.codehaus.jet.regression.MultipleLinearRegressionEstimator;
 import org.codehaus.jet.regression.estimators.GLSMultipleLinearRegressionEstimator;
 
 /**
- * Abstract base estimator of critical and p-value 
+ * Abstract base RejectionValueEstimator.  Concrete implementations include the 
+ * CriticalValueEstimator and PValueEstimator.
  * 
  * @author Mauro Talevi
+ * @see CriticalValueEstimator
+ * @see PValueEstimator
  */
 public abstract class AbstractRejectionValueEstimator implements RejectionValueEstimator {
+
     protected NormalDistribution distribution = new NormalDistributionImpl();
     protected MultipleLinearRegressionEstimator gls = new GLSMultipleLinearRegressionEstimator();
 
     protected ResponseSurfaceEvaluator responseSurfaceEvaluator;
-    private int np;
+    private int numberOfPoints;
     private double threshold;    
         
     /**
-     * @param np
+     * Creates an AbstractRejectionValueEstimator
+     * @param numberOfPoints
      * @param threshold
      */
-    public AbstractRejectionValueEstimator(int np, double threshold) {
-        this(null, np, threshold);
+    public AbstractRejectionValueEstimator(int numberOfPoints, double threshold) {
+        this(null, numberOfPoints, threshold);
     }
     
     /**
      * @param responseSurfaceEvaluator
-     * @param np
+     * @param numberOfPoints
      * @param threshold
      */
-    public AbstractRejectionValueEstimator(ResponseSurfaceEvaluator responseSurfaceEvaluator, int np, double threshold) {
+    public AbstractRejectionValueEstimator(ResponseSurfaceEvaluator responseSurfaceEvaluator, int numberOfPoints, double threshold) {
         this.responseSurfaceEvaluator = responseSurfaceEvaluator;
-        this.np = np;
+        this.numberOfPoints = numberOfPoints;
         this.threshold = threshold;
     }
     
@@ -136,14 +141,14 @@ public abstract class AbstractRejectionValueEstimator implements RejectionValueE
         return points < 5 ? 5 : points ;
     }
    
-    protected double[][] toXSample(double[] norm, int min, int np, int nvar) {
+    protected double[][] toXSample(double[] norms, int min, int np, int nvar) {
         if ( isMiddle(min, np) ){
-            return toMiddleXSample(norm, min, np, nvar);
+            return toMiddleXSample(norms, min, np, nvar);
         } else {
             if ( isLower(min,np) ){
-                return toTailXSample(norm, getTailPoints(min, np, false), nvar, false);
+                return toTailXSample(norms, getTailPoints(min, np, false), nvar, false);
             } else {
-                return toTailXSample(norm, getTailPoints(min, np, true), nvar, true);
+                return toTailXSample(norms, getTailPoints(min, np, true), nvar, true);
             }
         }
     }
@@ -267,8 +272,8 @@ public abstract class AbstractRejectionValueEstimator implements RejectionValueE
         }
     }
 
-    protected int getNp() {
-        return np;
+    protected int getNumberOfPoints() {
+        return numberOfPoints;
     }
 
     protected double getThreshold() {
