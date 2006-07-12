@@ -44,7 +44,7 @@ public interface RejectionValueEstimator {
      * 
      * @param norms the normalisations used to construct the regressors matrix
      * @param probs the probabilities used to construct the covariance matrix
-     * @param weights the weights sed to construct the covariance matrix
+     * @param weights the weights used to construct the covariance matrix
      * @param criticalValues the criticalvalues
      * @param level the significance level
      * 
