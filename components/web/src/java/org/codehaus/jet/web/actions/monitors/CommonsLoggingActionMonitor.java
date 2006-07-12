@@ -31,19 +31,18 @@ public class CommonsLoggingActionMonitor implements ActionMonitor {
     }
 
 	public void actionForwarded(String key, String path) {
-        log.info("Action forwarded for key "+key+" to path "+path);
+        log.debug("Action forwarded for key "+key+" to path "+path);
 	}
 
 	public void actionForwardNotFound(String key) {
-        log.info("Action forward not found for key "+key);
+        log.warn("Action forward not found for key "+key);
 	}
 
 	public void actionMappingNotFound() {
-        log.info("Action mapping not found");
+        log.warn("Action mapping not found");
 	}
 
     public void actionFailed(Exception cause) {
-        log.warn("Action failed: "+cause.getMessage(), cause);
+        log.error("Action failed: "+cause.getMessage(), cause);
     }
-
 }

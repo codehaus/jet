@@ -1,5 +1,6 @@
 package org.codehaus.jet.web.actions.struts;
 
+import java.util.Collection;
 import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -48,10 +49,25 @@ public class StrutsNoopActionTest extends MockObjectTestCase {
         assertNotNull("messageBundle", action.getActionMessageBundle());
         assertTrue("messageBundle", action.getActionMessageBundle() instanceof DefaultActionMessageBundle);
         assertNotNull("monitor", action.getActionMonitor());
-        assertTrue("monitor", action.getActionMonitor() instanceof CommonsLoggingActionMonitor);
-        
+        assertTrue("monitor", action.getActionMonitor() instanceof CommonsLoggingActionMonitor);        
     }
 
+    public void testWithDefaultBundle(){
+    	action = new StrutsNoopAction(new NoopActionMonitor());
+        assertNotNull("messageBundle", action.getActionMessageBundle());
+        assertTrue("messageBundle", action.getActionMessageBundle() instanceof DefaultActionMessageBundle);
+        assertNotNull("monitor", action.getActionMonitor());
+        assertTrue("monitor", action.getActionMonitor() instanceof NoopActionMonitor);        
+    }
+
+    public void testWithDefaultMonitor(){
+    	action = new StrutsNoopAction(new NoopActionMessageBundle());
+        assertNotNull("messageBundle", action.getActionMessageBundle());
+        assertTrue("messageBundle", action.getActionMessageBundle() instanceof NoopActionMessageBundle);
+        assertNotNull("monitor", action.getActionMonitor());
+        assertTrue("monitor", action.getActionMonitor() instanceof CommonsLoggingActionMonitor);        
+    }
+    
     public void testInvalidForward(){
         action = new StrutsNoopAction() {
             public String execute(){
@@ -219,9 +235,17 @@ public class StrutsNoopActionTest extends MockObjectTestCase {
     
     static class StrutsNoopAction extends AbstractStrutsJetAction {
 
-        public StrutsNoopAction() {
+		public StrutsNoopAction() {
             super();
         }
+
+    	public StrutsNoopAction(ActionMessageBundle messageBundle) {
+			super(messageBundle);
+		}
+
+		public StrutsNoopAction(ActionMonitor monitor) {
+			super(monitor);
+		}
         
         public StrutsNoopAction(ActionMessageBundle bundle, ActionMonitor monitor) {
             super(bundle, monitor);
@@ -232,5 +256,40 @@ public class StrutsNoopActionTest extends MockObjectTestCase {
         }
         
     }
+
+    static class NoopActionMonitor implements ActionMonitor {
+
+		public void actionFailed(Exception cause) {			
+		}
+
+		public void actionForwardNotFound(String key) {
+		}
+
+		public void actionForwarded(String key, String path) {
+		}
+
+		public void actionMappingNotFound() {
+		}
+    }    
+    
+    static class NoopActionMessageBundle implements ActionMessageBundle {
+
+		public void addMessage(String message, boolean useAsKey) {
+		}
+
+		public void addMessageException(Exception e) {
+		}
+
+		public Collection getMessages() {
+			return null;
+		}
+
+		public void newMessages() {
+		}
+
+		public void saveMessages(HttpServletRequest request) {			
+		}
+    }    
+    
 
 }
