@@ -68,6 +68,24 @@ public abstract class AbstractStrutsJetAction extends Action
 	 * Creates an AbstractStrutsJetAction
 	 * 
 	 * @param messageBundle the ActionMessageBundle
+	 */
+	protected AbstractStrutsJetAction(ActionMessageBundle messageBundle) {
+	    this(messageBundle, new CommonsLoggingActionMonitor());
+	}
+
+	/**
+	 * Creates an AbstractStrutsJetAction
+	 * 
+	 * @param monitor the ActionMonitor
+	 */
+	protected AbstractStrutsJetAction(ActionMonitor monitor) {
+	    this(new DefaultActionMessageBundle(), monitor);
+	}
+	
+	/**
+	 * Creates an AbstractStrutsJetAction
+	 * 
+	 * @param messageBundle the ActionMessageBundle
 	 * @param monitor the ActionMonitor
 	 */
 	protected AbstractStrutsJetAction(ActionMessageBundle messageBundle, ActionMonitor monitor) {
