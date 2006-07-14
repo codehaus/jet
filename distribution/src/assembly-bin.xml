@@ -3,6 +3,16 @@
 	<formats>
 		<format>zip</format>
 	</formats>
+	<fileSets>
+		<fileSet>
+			<directory>target/xsite</directory>
+			<outputDirectory>docs</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>target/site/reports</directory>
+			<outputDirectory>docs/reports</outputDirectory>
+		</fileSet>
+	</fileSets>	
 	<dependencySets>
 		<dependencySet>
 			<outputDirectory>/lib</outputDirectory>
