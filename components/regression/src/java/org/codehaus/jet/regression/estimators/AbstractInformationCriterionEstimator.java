@@ -98,12 +98,21 @@ public abstract class AbstractInformationCriterionEstimator implements
         for (int pos = 0; pos < n - p; pos++) {
             double[] row = new double[p];
             System.arraycopy(y, pos, row, 0, p);
-            regressors[pos] = row;
+            regressors[pos] = reverse(row);
         }               
         return regressors;
     }
 
-    protected static MultipleLinearRegressionEstimator createDefaultRegressionEstimator(){
+    private double[] reverse(double[] row) {
+    	int length = row.length;
+    	double[] reversed = new double[length];
+		for (int i = 0; i < row.length; i++) {
+			reversed[i] = row[length - i - 1];
+		}    	
+		return reversed;
+	}
+
+	protected static MultipleLinearRegressionEstimator createDefaultRegressionEstimator(){
         return new OLSMultipleLinearRegressionEstimator();
     }
 }
