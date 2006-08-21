@@ -10,58 +10,93 @@
   <packaging>war</packaging>
   <name>JET Web Engine</name>
   <version>1.0-SNAPSHOT</version>
+  <dependencies>
+    <dependency>
+      <groupId>${pom.groupId}</groupId>
+      <artifactId>jet-engine</artifactId>
+      <version>${pom.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>${pom.groupId}</groupId>
+      <artifactId>jet-web</artifactId>
+      <version>${pom.version}</version>
+    </dependency>
+  </dependencies>
   <build>
     <plugins>
       <plugin>
         <artifactId>maven-antrun-plugin</artifactId>
         <executions>
-          <execution>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>run</goal>
-            </goals>
-            <configuration>
-              <tasks></tasks>
-            </configuration>
-          </execution>
-          <execution>
-            <id>build-web-artifacts</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>run</goal>
-            </goals>
-            <configuration>
-              <tasks>
-                <echo>Building web artifacts</echo>
-                <copy overwrite="true" todir="${webapp.dir}">
-                  <fileset dir="${src.dir}">
-                    <include name="images/**"></include>
-                    <include name="js/**"></include>
-                    <include name="jsp/**"></include>
-                    <include name="style/**"></include>
-                  </fileset>
-                </copy>
-                <copy overwrite="true" todir="${webapp.dir}/WEB-INF">
-                  <fileset dir="${src.dir}/conf/struts"></fileset>
-                </copy>
-                <copy overwrite="true" todir="${webapp.dir}/WEB-INF">
-                  <fileset dir="${distribution.src.dir}/tld"></fileset>
-                </copy>
-                <copy overwrite="true" todir="${webapp.dir}/WEB-INF/classes">
-                  <fileset dir="${src.dir}/conf/bundles"></fileset>
-                  <fileset dir="${src.dir}/conf/nanowar"></fileset>
-                </copy>
-                <copy overwrite="true" todir="${webapp.dir}/WEB-INF/classes">
-                  <fileset dir="${distribution.src.dir}/conf">
-                    <include name="*.xml"></include>
-                  </fileset>
-                  <filterset>
-                    <filtersfile file="${jet.properties}"></filtersfile>
-                  </filterset>
-                </copy>
-              </tasks>
-            </configuration>
-          </execution>
+        	<execution>
+        		<phase>generate-sources</phase>
+        		<goals>
+        			<goal>run</goal>
+        		</goals>
+        		<configuration>
+        			<tasks></tasks>
+        		</configuration>
+        	</execution>
+        	<execution>
+        		<id>build-web-artifacts</id>
+        		<phase>generate-sources</phase>
+        		<goals>
+        			<goal>run</goal>
+        		</goals>
+        		<configuration>
+        			<tasks>
+        				<echo>Building web artifacts</echo>
+        				<copy overwrite="true" todir="${webapp.dir}">
+        					<fileset dir="${src.dir}">
+        						<include name="images/**"></include>
+        						<include name="js/**"></include>
+        						<include name="jsp/**"></include>
+        						<include name="style/**"></include>
+        					</fileset>
+        				</copy>
+        				<copy overwrite="true"
+        					todir="${webapp.dir}/WEB-INF">
+        					<fileset dir="${src.dir}/conf/struts"></fileset>
+        				</copy>
+        				<copy overwrite="true"
+        					todir="${webapp.dir}/WEB-INF">
+        					<fileset
+        						dir="${distribution.src.dir}/tld">
+        					</fileset>
+        				</copy>
+        				<copy overwrite="true"
+        					todir="${webapp.dir}/WEB-INF/classes">
+        					<fileset dir="${src.dir}/conf/bundles"></fileset>
+        					<fileset dir="${src.dir}/conf/nanowar"></fileset>
+        				</copy>
+        				<copy overwrite="true"
+        					todir="${webapp.dir}/WEB-INF/classes">
+        					<fileset
+        						dir="${distribution.src.dir}/conf">
+        						<include name="*.xml"></include>
+        					</fileset>
+        					<filterset>
+        						<filtersfile file="${jet.properties}"></filtersfile>
+        					</filterset>
+        				</copy>
+        			</tasks>
+        		</configuration>
+        	</execution>
+        	<execution>
+        		<id>deploy-web-artifacts</id>
+        		<phase>install</phase>
+        		<configuration>
+        			<tasks>
+        				<echo>Deploying web artifacts</echo>
+        				<property environment="env" />
+        				<copy file="target/${war.name}.war"
+        					tofile="${env.TOMCAT_HOME}/webapps/${war.name}.war"
+        					verbose="true" overwrite="true" />
+        			</tasks>
+        		</configuration>
+        		<goals>
+        			<goal>run</goal>
+        		</goals>
+        	</execution>
         </executions>
       </plugin>
       <plugin>
@@ -74,18 +109,6 @@
       </plugin>
     </plugins>
   </build>
-  <dependencies>
-    <dependency>
-      <groupId>${pom.groupId}</groupId>
-      <artifactId>jet-web</artifactId>
-      <version>${pom.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>${pom.groupId}</groupId>
-      <artifactId>jet-engine</artifactId>
-      <version>${pom.version}</version>
-    </dependency>
-  </dependencies>
   <properties>
     <war.name>jet</war.name>
   </properties>
