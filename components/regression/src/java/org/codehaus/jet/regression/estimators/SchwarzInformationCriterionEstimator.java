@@ -36,13 +36,12 @@ public class SchwarzInformationCriterionEstimator extends AbstractInformationCri
      * SIC(p)= log(sigma^2(p)+[p*log(T)]/T
      * </pre>
      * @param p the lag order
-     * @return The SIC for the given lag order
+     * @param T the sample size
+     * @param var the sample variance
+     * @return The SIC value
      */
-    public double estimateIC(int p) {
-        int T = getSampleSize();
-        double var = calculateYVariance(p);
-        double value = log(var)+p*log(T)/T;
-        return value;
+    protected double calculateIC(int p, int T, double var) {
+        return log(var)+p*log(T)/T;
     }
 
 
