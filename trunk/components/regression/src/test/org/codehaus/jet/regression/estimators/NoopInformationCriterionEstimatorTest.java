@@ -40,6 +40,10 @@ public class NoopInformationCriterionEstimatorTest extends AbstractInformationCr
         public double estimateIC(int lag) {
             return lag;
         }
+
+        protected double calculateIC(int p, int t, double var) {
+            return 0;
+        }
         
     }
 }

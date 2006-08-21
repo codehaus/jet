@@ -112,7 +112,16 @@ public abstract class AbstractInformationCriterionEstimator implements
 		return reversed;
 	}
 
-	protected static MultipleLinearRegressionEstimator createDefaultRegressionEstimator(){
+	public double estimateIC(int p) {
+        int T = getSampleSize();
+        double var = calculateYVariance(p);
+        double value = calculateIC(p, T, var);
+        return value;
+    }
+
+    protected abstract double calculateIC(int p, int t, double var) ;
+
+    protected static MultipleLinearRegressionEstimator createDefaultRegressionEstimator(){
         return new OLSMultipleLinearRegressionEstimator();
     }
 }

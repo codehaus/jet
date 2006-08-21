@@ -36,13 +36,12 @@ public class AkaikeInformationCriterionEstimator extends AbstractInformationCrit
      * AIC(p)= -2T[ln(sigma^2(p)]+2p
      * </pre>
      * @param p the lag order
-     * @return The AIC for the given lag order
+     * @param T the sample size
+     * @param var the sample variance
+     * @return The AIC value
      */
-    public double estimateIC(int p) {
-        int T = getSampleSize();
-        double var = calculateYVariance(p);
-        double value = -2*T*log(var)+2*p;
-        return value;
+    protected double calculateIC(int p, int T, double var) {
+        return -2*T*log(var)+2*p;
     }
 
 
