@@ -13,6 +13,6 @@ public interface JetEngine {
     double estimatePValue(String testName, int[] options, double level, int sampleSize) 
             throws JetException;
 
-    String[] getTestNames();
+    String[] listTestNames();
 
 }

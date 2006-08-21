@@ -13,6 +13,6 @@ public interface HypothesisTester {
     double estimatePValue(String testName, int[] options, double level, int sampleSize) 
             throws HypothesisException;
 
-    String[] getTestNames();
+    String[] listTestNames();
 
 }

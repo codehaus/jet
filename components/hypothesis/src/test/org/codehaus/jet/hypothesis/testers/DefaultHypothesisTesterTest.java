@@ -71,7 +71,7 @@ public class DefaultHypothesisTesterTest extends TestCase {
     }
 
     public void testTestNamesCanBeRetrieved() {
-        assertEquals(Arrays.toString(DefaultHypothesisTester.SUPPORTED_TEST_NAMES), Arrays.toString(tester.getTestNames()));
+        assertEquals(Arrays.toString(DefaultHypothesisTester.SUPPORTED_TEST_NAMES), Arrays.toString(tester.listTestNames()));
     }
     
     private void assertCriticalValue(double expected, String testName, int integratedVariables, int regressionVariables, 

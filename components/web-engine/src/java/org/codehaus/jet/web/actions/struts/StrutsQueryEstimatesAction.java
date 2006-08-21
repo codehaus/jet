@@ -110,7 +110,7 @@ public class StrutsQueryEstimatesAction
      * @throws JetException
      */
     protected void populateEstimatesForm(StrutsEstimatesQueryForm form) throws JetException {
-        form.setTestNames(toLabelValueBeans(engine.getTestNames()));
+        form.setTestNames(toLabelValueBeans(engine.listTestNames()));
     }
 
     /**

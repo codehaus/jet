@@ -34,7 +34,7 @@ public class DefaultJetEngineTest extends MockObjectTestCase {
                     .will(returnValue(criticalValue));
             mock.stubs().method("estimatePValue").withAnyArguments().will(
                     returnValue(pValue));
-            mock.stubs().method("getTestNames").withAnyArguments().will(
+            mock.stubs().method("listTestNames").withAnyArguments().will(
                     returnValue(testNames));
             
         }
@@ -45,7 +45,7 @@ public class DefaultJetEngineTest extends MockObjectTestCase {
         engine = new DefaultJetEngine(); 
         assertCriticalValue(DefaultHypothesisTester.URC_TEST, 1, 0, 1, 0.01, 0);
         assertPValue(DefaultHypothesisTester.URC_TEST, 1, 0, 1, 0.01, 0);
-        assertTrue(engine.getTestNames().length > 0);
+        assertTrue(engine.listTestNames().length > 0);
     }
     
 
@@ -65,7 +65,7 @@ public class DefaultJetEngineTest extends MockObjectTestCase {
         engine = new DefaultJetEngine(mockHypothesisTester(false)); 
         assertEquals(criticalValue, engine.estimateCriticalValue(null, null, 0.1, 100), precision);
         assertEquals(pValue, engine.estimatePValue(null, null, 0.1, 100), precision);
-        assertEquals(Arrays.toString(testNames), Arrays.toString(engine.getTestNames()));
+        assertEquals(Arrays.toString(testNames), Arrays.toString(engine.listTestNames()));
     }
 
     public void testCustomTesterExceptionsCanBeCaught() throws Exception {

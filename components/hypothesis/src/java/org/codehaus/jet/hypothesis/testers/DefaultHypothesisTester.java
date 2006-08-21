@@ -94,7 +94,7 @@ public class DefaultHypothesisTester implements HypothesisTester {
         }
     }
 
-    public String[] getTestNames() {
+    public String[] listTestNames() {
         return SUPPORTED_TEST_NAMES ;
     }
 
