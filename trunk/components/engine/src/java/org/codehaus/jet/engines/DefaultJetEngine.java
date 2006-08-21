@@ -46,8 +46,8 @@ public class DefaultJetEngine implements JetEngine {
         }
     }
 
-    public String[] getTestNames() {
-        return tester.getTestNames();
+    public String[] listTestNames() {
+        return tester.listTestNames();
     }
 
 }

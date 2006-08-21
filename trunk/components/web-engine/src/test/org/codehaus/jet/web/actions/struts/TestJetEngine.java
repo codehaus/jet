@@ -13,7 +13,7 @@ public class TestJetEngine implements JetEngine {
         return 0;
     }
 
-    public String[] getTestNames() {
+    public String[] listTestNames() {
         return null;
     }
 
