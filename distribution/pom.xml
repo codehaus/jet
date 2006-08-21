@@ -11,20 +11,11 @@
 	<name>JET Distribution</name>
 	<version>1.0-SNAPSHOT</version>
 	<scm>
-		<connection>
-			scm:svn:https://svn.codehaus.org/jet/trunk
-		</connection>
-		<developerConnection>
-			scm:svn:https://svn.codehaus.org/jet/trunk
-		</developerConnection>
+		<connection>scm:svn:http://svn.codehaus.org/jet/trunk</connection>
+		<developerConnection>scm:svn:https://svn.codehaus.org/jet/trunk</developerConnection>
+		<url>http://svn.codehaus.org/jet/trunk</url>	
 	</scm>
 	<dependencies>
-		<dependency>
-			<groupId>${pom.groupId}</groupId>
-			<artifactId>jet-engine</artifactId>
-			<version>${pom.version}</version>
-			<scope>runtime</scope>
-		</dependency>
 		<dependency>
 			<groupId>${pom.groupId}</groupId>
 			<artifactId>jet-web-engine</artifactId>
@@ -32,19 +23,12 @@
 			<type>war</type>
 			<scope>webapp</scope>
 		</dependency>
-		<dependency>
-			<groupId>${pom.groupId}</groupId>
-			<artifactId>jet-regression</artifactId>
-			<version>${pom.version}</version>
-			<scope>runtime</scope>
-		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-scm-plugin</artifactId>
-				<version>1.0-beta-3</version>
 				<executions>
 					<execution>
 						<phase>install</phase>
@@ -132,9 +116,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
 				<configuration>
-					<includeProjectDocumentation>
-						false
-					</includeProjectDocumentation>
+					<includeProjectDocumentation>false</includeProjectDocumentation>
 				</configuration>
 				<executions>
 					<execution>
