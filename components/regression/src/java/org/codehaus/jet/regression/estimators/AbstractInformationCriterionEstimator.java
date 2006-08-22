@@ -22,6 +22,13 @@ public abstract class AbstractInformationCriterionEstimator implements
     private double[] y;
 
     /**
+     * Creates an AbstractInformationCriterionEstimator with a defaultregression estimator
+     */
+    protected AbstractInformationCriterionEstimator() {
+        this(createDefaultRegressionEstimator());
+    }
+
+    /**
      * Creates an AbstractInformationCriterionEstimator with a given regression estimator
      * @param regression the GeneralLinearRegression
      */

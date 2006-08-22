@@ -19,7 +19,7 @@ public class HannanQuinnInformationCriterionEstimator extends AbstractInformatio
      *  Creates an HannanQuinnInformationCriterionEstimator with default regression estimator
      */
     public HannanQuinnInformationCriterionEstimator() {
-        this(createDefaultRegressionEstimator());
+        super();
     }
 
     /**
