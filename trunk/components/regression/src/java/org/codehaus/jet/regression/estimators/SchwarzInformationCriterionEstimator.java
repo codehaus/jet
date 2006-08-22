@@ -19,7 +19,7 @@ public class SchwarzInformationCriterionEstimator extends AbstractInformationCri
      *  Creates an SchwarzInformationCriterionEstimator with default regression estimator
      */
     public SchwarzInformationCriterionEstimator() {
-        this(createDefaultRegressionEstimator());
+        super();
     }
 
     /**

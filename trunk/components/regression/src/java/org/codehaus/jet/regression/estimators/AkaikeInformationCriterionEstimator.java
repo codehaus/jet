@@ -19,7 +19,7 @@ public class AkaikeInformationCriterionEstimator extends AbstractInformationCrit
      *  Creates an AkaikeInformationCriterionEstimator with default regression estimator
      */
     public AkaikeInformationCriterionEstimator() {
-        this(createDefaultRegressionEstimator());
+        super();
     }
 
     /**
