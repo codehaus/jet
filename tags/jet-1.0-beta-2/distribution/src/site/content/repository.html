@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>Source Repository</title>
+  </head>
+  <body>
+
+    <h2>Subversion</h2>
+    
+	<p>JET uses Subversion as the SCM.  See <a href="http://subversion.tigris.org">Subversion</a> for details and documentation on IDE integration.
+	</p>
+
+	<h2>WebDav Access</h2>
+
+	<p>
+	WebDav is an access protocol supported by SVN and being http-based is often allowed by corporate firewalls. 
+	</p>
+	
+	<h3>Anonymous Access</h3>
+			
+		<div class="Source"><pre>svn co http://svn.codehaus.org/jet/trunk jet</pre></div>
+		
+	<h3>WebDAV over SSL</h3>
+
+		<div class="Source"><pre>svn co https://svn.codehaus.org/jet/trunk< jet</pre></div>
+
+		<p>
+		This access protocol is available to all, but only developers can commit changes.    
+		</p>
+		<p>
+		Developers require a unix password for Codehaus username. 
+		To test https commit access, one may eg: 
+			<div class="Source"><pre>
+svn co https://svn.codehaus.org/jet/trunk jet
+cd jet
+echo "test" &gt; TEST
+svn add TEST
+svn commit --username username --password your-password --message "Testing https"
+			</pre></div>
+		</p>
+		<p>
+		<b>Note</b>: you only need to specify username and password once per client.
+		</p>
+	
+  </body>
+</html>
