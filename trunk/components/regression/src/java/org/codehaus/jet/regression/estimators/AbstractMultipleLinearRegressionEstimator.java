@@ -27,7 +27,7 @@ public abstract class AbstractMultipleLinearRegressionEstimator implements
     /**
      * Adds x sample data
      * 
-     * @param x the [n,p] array representing the x sample
+     * @param x the [n,k] array representing the x sample
      */
     protected void addXSampleData(double[][] x){
         this.X = new RealMatrixImpl(x);
