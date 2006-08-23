@@ -21,8 +21,9 @@ public interface MultipleLinearRegressionEstimator {
      * Adds sample and covariance data
      * 
      * @param y the [n,1] array representing the y sample
-     * @param x the [n,k-1] array representing x sample, to which a unity column is added to make a [n,k] matrix.
-     * @param covariance the [n,n] array representing the covariance matrix 
+     * @param x the [n,k] array representing x sample
+     * @param covariance the [n,n] array representing the covariance matrix or <code>null</code> if not appropriate for the
+     *          specific implementation
      */
     void addData(double[] y, double[][] x, double[][] covariance);
 
