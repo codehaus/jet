@@ -58,10 +58,10 @@
     <p>
 	Options are test-dependent and expressed as comma-separated integers:
 	<ol>    
-		<li>URC: [integrationVariables (1-12), regressionVariables (0{nc}-3{ctt}), testType (1{tau}-2{z})]; </li>
-		<li>ECM: [integrationVariables (1-12), regressionVariables (0{nc}-3{ctt}), ncoeff]; </li>
-		<li>LRC: [restrictionVariables (1-12), exogenousVariables (0-8), regressionVariables (0{I}-4{V}), testType (1{lambda}-2{trace})]</li>
-		<li>Johansen: [restrictionVariables (1-12), exogenousVariables (0-8), regressionVariables (0{I}-4{V}), testType (1{lambda}-2{trace})]</li>
+		<li>URC: [integrationVariables (1-12), regressionVariables (0{nc},1{c},2{ct},3{ctt}), testType (1{tau}-2{z})]; </li>
+		<li>ECM: [integrationVariables (1-12), regressionVariables (0{nc},1{c},2{ct},3{ctt}), ncoeff]; </li>
+		<li>LRC: [restrictionVariables (1-12), exogenousVariables (0-8), regressionVariables (0{I(0)},1{II(1*)},2{III},3{IV(2*)},5{V}), testType (1{lambda}-2{trace})]</li>
+		<li>Johansen: [restrictionVariables (1-12), exogenousVariables (0-8), regressionVariables (0{0},1{1},2{2},3{1*},4{2*}), testType (1{lambda}-2{trace})]</li>
 	</ol>
 	</p>
 	<br/>
