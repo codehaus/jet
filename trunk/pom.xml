@@ -21,17 +21,17 @@
 	</scm>	
 	<distributionManagement>
 		<repository>
-			<id>codehaus-jet-repository</id>
+			<id>codehaus.org</id>
 			<name>Codehaus JET Repository</name>
 			<url>dav:https://dav.codehaus.org/repository/jet/</url>
 		</repository>
 		<snapshotRepository>
-			<id>codehaus-jet-snapshot-repository</id>
+			<id>codehaus.org</id>
 			<name>Codehaus JET Snapshot Repository</name>
 			<url>dav:https://dav.codehaus.org/snapshots.repository/jet/	</url>
 		</snapshotRepository>
 		<site>
-			<id>jet-site</id>
+			<id>codehaus.org</id>
 			<url>dav:https://dav.codehaus.org/jet</url>
 		</site>
 	</distributionManagement>
