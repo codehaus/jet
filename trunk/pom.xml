@@ -11,8 +11,6 @@
 		<module>jet-regression</module>
 		<module>jet-hypothesis</module>
 		<module>jet-engine</module>
-		<module>components/web</module>
-		<module>components/web-engine</module>
 	</modules>
 	<scm>
 		<connection>scm:svn:https://svn.codehaus.org/jet/trunk</connection>
@@ -48,8 +46,6 @@
 		</repository>
 	</repositories>
 	<build>
-		<sourceDirectory>${basedir}/src/java</sourceDirectory>
-		<testSourceDirectory>${basedir}/src/test</testSourceDirectory>
 		<extensions>
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
@@ -59,12 +55,12 @@
 		</extensions>
 		<resources>
 			<resource>
-				<directory>${basedir}/src/java</directory>
+				<directory>${basedir}/src/main/java</directory>
 			</resource>
 		</resources>
 		<testResources>
 			<testResource>
-				<directory>${basedir}/src/test</directory>
+				<directory>${basedir}/src/test/java</directory>
 			</testResource>
 		</testResources>
 		<plugins>
