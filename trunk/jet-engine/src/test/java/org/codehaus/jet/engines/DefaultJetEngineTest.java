@@ -3,7 +3,7 @@ package org.codehaus.jet.engines;
 import static org.junit.Assert.assertTrue;
 
 import org.codehaus.jet.JetEngine;
-import org.codehaus.jet.hypothesis.testers.DefaultHypothesisTester;
+import org.codehaus.jet.hypothesis.HypothesisTest;
 import org.junit.Test;
 
 /**
@@ -16,8 +16,8 @@ public class DefaultJetEngineTest {
     @Test
     public void canEstimateValues() throws Exception {
         engine = new DefaultJetEngine();
-        assertCriticalValue(DefaultHypothesisTester.URC_TEST, 1, 0, 1, 0.01, 0);
-        assertPValue(DefaultHypothesisTester.URC_TEST, 1, 0, 1, 0.01, 0);
+        assertCriticalValue(HypothesisTest.URC.getName(), 1, 0, 1, 0.01, 0);
+        assertPValue(HypothesisTest.URC.getName(), 1, 0, 1, 0.01, 0);
         assertTrue(engine.listTestNames().length > 0);
     }
 

@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import org.codehaus.jet.hypothesis.HypothesisException;
+import org.codehaus.jet.hypothesis.HypothesisTest;
 import org.codehaus.jet.hypothesis.HypothesisTester;
 import org.codehaus.jet.hypothesis.io.BetaReader;
 import org.codehaus.jet.hypothesis.io.CriticalValueReader;
@@ -22,15 +23,10 @@ import org.codehaus.jet.hypothesis.rejection.estimators.DefaultEstimatorProvider
  */
 public class DefaultHypothesisTester implements HypothesisTester {
 
-    public static final String URC_TEST = "URC";
-    public static final String ECM_TEST = "ECM";
-    public static final String LRC_TEST = "LRC";
-    public static final String JOHANSEN_TEST = "Johansen";
-    
     private static final String PARAMETERS = "[testName={0}, options={1}, level={2}, sampleSize={3}]";
 
-    static final String[] SUPPORTED_TEST_NAMES = new String[]{URC_TEST, ECM_TEST, JOHANSEN_TEST};
-    static final String[] ASYMPTOTIC_TEST_NAMES = new String[]{LRC_TEST, JOHANSEN_TEST};
+    static final String[] SUPPORTED_TEST_NAMES = new String[]{HypothesisTest.URC.getName(), HypothesisTest.ECM.getName(), HypothesisTest.JOHANSEN.getName()};
+    static final String[] ASYMPTOTIC_TEST_NAMES = new String[]{HypothesisTest.LRC.getName(),  HypothesisTest.JOHANSEN.getName()};
 
     private RejectionValueEstimatorProvider estimatorProvider;
     private ReaderProvider readerProvider;
