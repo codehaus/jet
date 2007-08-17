@@ -83,7 +83,7 @@
 							<goal>assembly</goal>
 						</goals>
 						<configuration>
-							<descriptor>${basedir}/src/assembly-bin.xml</descriptor>
+							<descriptor>${basedir}/src/assembly/assembly-bin.xml</descriptor>
 							<finalName>jet-${pom.version}</finalName>
 							<workDirectory>target/assembly/bin</workDirectory>
 						</configuration>
@@ -95,7 +95,7 @@
 							<goal>assembly</goal>
 						</goals>
 						<configuration>
-							<descriptor>${basedir}/src/assembly-src.xml</descriptor>
+							<descriptor>${basedir}/src/assembly/assembly-src.xml</descriptor>
 							<finalName>jet-${pom.version}</finalName>
 							<workDirectory>target/assembly/src</workDirectory>
 						</configuration>
