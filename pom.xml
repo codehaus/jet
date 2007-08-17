@@ -8,9 +8,9 @@
 	<version>1.0-SNAPSHOT</version>
 	<ciManagement />
 	<modules>
-		<module>components/regression</module>
-		<module>components/hypothesis</module>
-		<module>components/engine</module>
+		<module>jet-regression</module>
+		<module>jet-hypothesis</module>
+		<module>jet-engine</module>
 		<module>components/web</module>
 		<module>components/web-engine</module>
 	</modules>
@@ -47,16 +47,6 @@
 			<url>http://snapshots.repository.codehaus.org</url>
 		</repository>
 	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>codehaus-plugin-snapshot-repository</id>
-			<name>Codehaus Plugin Snapshot Repository</name>
-			<url>http://snapshots.repository.codehaus.org/</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
 	<build>
 		<sourceDirectory>${basedir}/src/java</sourceDirectory>
 		<testSourceDirectory>${basedir}/src/test</testSourceDirectory>
