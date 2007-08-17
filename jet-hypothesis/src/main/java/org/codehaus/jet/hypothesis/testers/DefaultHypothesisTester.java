@@ -35,7 +35,7 @@ public class DefaultHypothesisTester implements HypothesisTester {
     private RejectionValueEstimatorProvider estimatorProvider;
     private ReaderProvider readerProvider;
 
-    private Collection asymptoticTests = Arrays.asList(ASYMPTOTIC_TEST_NAMES);
+    private Collection<String> asymptoticTests = Arrays.asList(ASYMPTOTIC_TEST_NAMES);
 
     public DefaultHypothesisTester() {
         this(new DefaultEstimatorProvider(), new DefaultReaderProvider());
@@ -46,7 +46,7 @@ public class DefaultHypothesisTester implements HypothesisTester {
         this.readerProvider = readerProvider;
     }
 
-    public double estimateCriticalValue(String testName, int[] options, double level, int sampleSize) throws HypothesisException {
+    public double estimateCriticalValue(String testName, int[] options, double level, int sampleSize) {
         try {            
             ProbabilityReader probabilityReader = readerProvider.getProbabilityReader();
             probabilityReader.read();
@@ -70,7 +70,7 @@ public class DefaultHypothesisTester implements HypothesisTester {
         }
     }
 
-    public double estimatePValue(String testName, int[] options, double level, int sampleSize) throws HypothesisException {
+    public double estimatePValue(String testName, int[] options, double level, int sampleSize) {
         try {
             ProbabilityReader probabilityReader = readerProvider.getProbabilityReader();
             probabilityReader.read();

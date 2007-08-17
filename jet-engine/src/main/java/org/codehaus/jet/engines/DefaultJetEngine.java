@@ -1,8 +1,6 @@
 package org.codehaus.jet.engines;
 
 import org.codehaus.jet.JetEngine;
-import org.codehaus.jet.JetException;
-import org.codehaus.jet.hypothesis.HypothesisException;
 import org.codehaus.jet.hypothesis.HypothesisTester;
 import org.codehaus.jet.hypothesis.testers.DefaultHypothesisTester;
 
@@ -30,20 +28,12 @@ public class DefaultJetEngine implements JetEngine {
         this.tester = tester;
     }
 
-    public double estimateCriticalValue(String testName, int[] options, double level, int sampleSize) throws JetException {
-        try {
-            return tester.estimateCriticalValue(testName, options, level, sampleSize);
-        } catch ( HypothesisException e) {
-            throw new JetException("Failed to estimate critical value", e);
-        }
+    public double estimateCriticalValue(String testName, int[] options, double level, int sampleSize) {
+        return tester.estimateCriticalValue(testName, options, level, sampleSize);
     }
 
-    public double estimatePValue(String testName, int[] options, double level, int sampleSize) throws JetException {
-        try {
-            return tester.estimatePValue(testName, options, level, sampleSize);
-        } catch ( HypothesisException e) {
-            throw new JetException("Failed to estimate P value", e);
-        }
+    public double estimatePValue(String testName, int[] options, double level, int sampleSize) {
+        return tester.estimatePValue(testName, options, level, sampleSize);
     }
 
     public String[] listTestNames() {

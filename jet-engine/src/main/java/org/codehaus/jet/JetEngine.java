@@ -7,11 +7,9 @@ package org.codehaus.jet;
  */
 public interface JetEngine {
     
-    double estimateCriticalValue(String testName, int[] options, double level, int sampleSize)
-            throws JetException;
+    double estimateCriticalValue(String testName, int[] options, double level, int sampleSize);
 
-    double estimatePValue(String testName, int[] options, double level, int sampleSize) 
-            throws JetException;
+    double estimatePValue(String testName, int[] options, double level, int sampleSize);
 
     String[] listTestNames();
 
