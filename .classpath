@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="jet-regression/src/java"/>
-	<classpathentry kind="src" path="jet-regression/src/test"/>
-	<classpathentry kind="src" path="jet-hypothesis/src/java"/>
-	<classpathentry kind="src" path="jet-hypothesis/src/test"/>
-	<classpathentry kind="src" path="jet-engine/src/java"/>
-	<classpathentry kind="src" path="jet-engine/src/test"/>
-	<classpathentry kind="src" path="components/web/src/java"/>
-	<classpathentry kind="src" path="components/web/src/test"/>
-	<classpathentry kind="src" path="components/web-engine/src/java"/>
-	<classpathentry kind="src" path="components/web-engine/src/test"/>
+	<classpathentry kind="src" path="jet-regression/src/main/java"/>
+	<classpathentry kind="src" path="jet-regression/src/test/java"/>
+	<classpathentry kind="src" path="jet-hypothesis/src/main/java"/>
+	<classpathentry kind="src" path="jet-hypothesis/src/test/java"/>
+	<classpathentry kind="src" path="jet-engine/src/main/java"/>
+	<classpathentry kind="src" path="jet-engine/src/test/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.maven.ide.eclipse.MAVEN2_CLASSPATH_CONTAINER"/>
 	<classpathentry kind="output" path="target/classes"/>
