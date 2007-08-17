@@ -3,11 +3,11 @@ package org.codehaus.jet.hypothesis.rejection.estimators;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.codehaus.jet.hypothesis.HypothesisTest;
 import org.codehaus.jet.hypothesis.rejection.RejectionValueEstimator;
 import org.codehaus.jet.hypothesis.rejection.RejectionValueEstimatorProvider;
 import org.codehaus.jet.hypothesis.rejection.evaluators.ECMResponseSurfaceEvaluator;
 import org.codehaus.jet.hypothesis.rejection.evaluators.URCResponseSurfaceEvaluator;
-import org.codehaus.jet.hypothesis.testers.DefaultHypothesisTester;
 
 /**
  * Default implementation of RejectionValueEstimatorProvider. 
@@ -57,19 +57,19 @@ public class DefaultEstimatorProvider implements RejectionValueEstimatorProvider
     
     private static Map<String, CriticalValueEstimator> createDefaultCriticalValueEstimators() {
         Map<String, CriticalValueEstimator> map = new HashMap<String, CriticalValueEstimator>();        
-        map.put(DefaultHypothesisTester.ECM_TEST, new CriticalValueEstimator(new ECMResponseSurfaceEvaluator(), 11, 2.0));
-        map.put(DefaultHypothesisTester.URC_TEST, new CriticalValueEstimator(new URCResponseSurfaceEvaluator(), 9, 2.0));
-        map.put(DefaultHypothesisTester.LRC_TEST, new CriticalValueEstimator(11, 2.0));
-        map.put(DefaultHypothesisTester.JOHANSEN_TEST, new CriticalValueEstimator(11, 2.0));
+        map.put(HypothesisTest.ECM.getName(), new CriticalValueEstimator(new ECMResponseSurfaceEvaluator(), 11, 2.0));
+        map.put(HypothesisTest.URC.getName(), new CriticalValueEstimator(new URCResponseSurfaceEvaluator(), 9, 2.0));
+        map.put(HypothesisTest.LRC.getName(), new CriticalValueEstimator(11, 2.0));
+        map.put(HypothesisTest.JOHANSEN.getName(), new CriticalValueEstimator(11, 2.0));
         return map;
     }
 
     private static Map<String, PValueEstimator> createDefaultPValueEstimators() {
         Map<String, PValueEstimator> map = new HashMap<String, PValueEstimator>();       
-        map.put(DefaultHypothesisTester.ECM_TEST, new PValueEstimator(new ECMResponseSurfaceEvaluator(), 11, 2.0));
-        map.put(DefaultHypothesisTester.URC_TEST, new PValueEstimator(new URCResponseSurfaceEvaluator(), 9, 2.0));
-        map.put(DefaultHypothesisTester.LRC_TEST, new PValueEstimator(11, 2.0));
-        map.put(DefaultHypothesisTester.JOHANSEN_TEST, new PValueEstimator(11, 2.0));
+        map.put(HypothesisTest.ECM.getName(), new PValueEstimator(new ECMResponseSurfaceEvaluator(), 11, 2.0));
+        map.put(HypothesisTest.URC.getName(), new PValueEstimator(new URCResponseSurfaceEvaluator(), 9, 2.0));
+        map.put(HypothesisTest.LRC.getName(), new PValueEstimator(11, 2.0));
+        map.put(HypothesisTest.JOHANSEN.getName(), new PValueEstimator(11, 2.0));
         return map;
     }
 
