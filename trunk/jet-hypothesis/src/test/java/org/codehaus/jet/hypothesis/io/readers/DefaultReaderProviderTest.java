@@ -1,14 +1,19 @@
 package org.codehaus.jet.hypothesis.io.readers;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
+
 
 /**
  * 
  * @author Mauro Talevi
  */
-public class DefaultReaderProviderTest extends TestCase {
+public class DefaultReaderProviderTest {
 
-    public void testCanHandleReaderNotFound(){
+    @Test
+    public void canHandleReaderNotFound(){
         DefaultReaderProvider provider = new DefaultReaderProvider();
         String name = "non-existent";
         try {

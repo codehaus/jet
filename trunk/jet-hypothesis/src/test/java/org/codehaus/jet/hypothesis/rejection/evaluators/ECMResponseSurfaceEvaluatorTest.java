@@ -1,17 +1,15 @@
 package org.codehaus.jet.hypothesis.rejection.evaluators;
 
 import org.codehaus.jet.hypothesis.rejection.ResponseSurfaceEvaluator;
+import org.junit.Test;
 
 /**
  * 
  * @author Mauro Talevi
  */
-public class ECMResponseSurfaceEvaluatorTest extends AbstractResponseSurfaceEvaluatorTestCase {
+public class ECMResponseSurfaceEvaluatorTest extends AbstractResponseSurfaceEvaluatorTest {
     
-    protected void setUp() throws Exception {
-        super.setUp();
-    }
-
+    @Test
     public void testCanEvaluateSurface(){
         assertSurface(1.0, new double[]{1.0, 0.9, 0.8, 0.7}, 0, new int[]{2, 3, 4});
         assertSurface(1.0183200, new double[]{1.0, 0.9, 0.8, 0.7}, 50, new int[]{2, 3, 4});
@@ -22,6 +20,7 @@ public class ECMResponseSurfaceEvaluatorTest extends AbstractResponseSurfaceEval
         assertSurface(1.0218915, new double[]{1.0, 0.9, 0.8, 0.7}, 50, new int[]{7, 3, 4});
     }
 
+    @Test
     public void testCanValidateParameters(){
         assertInvalidParams("beta must be have at least 3 coefficients", 
                 new double[]{1.0, 0.9}, 0, new int[]{2, 3, 4});

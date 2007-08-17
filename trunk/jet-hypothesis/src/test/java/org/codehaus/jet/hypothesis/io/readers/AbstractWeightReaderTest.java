@@ -1,8 +1,8 @@
 package org.codehaus.jet.hypothesis.io.readers;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
 
-public abstract class AbstractWeightReaderTestCase extends TestCase {
+public abstract class AbstractWeightReaderTest {
 
     protected void assertBeta(double[][] beta, int length, int regression, double first, double last) {
         assertEquals(length, beta.length);

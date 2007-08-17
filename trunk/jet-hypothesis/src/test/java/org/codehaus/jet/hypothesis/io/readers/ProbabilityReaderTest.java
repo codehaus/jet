@@ -1,13 +1,15 @@
 package org.codehaus.jet.hypothesis.io.readers;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
 
 import org.codehaus.jet.hypothesis.io.ProbabilityReader;
+import org.junit.Test;
 
 
-public class ProbabilityReaderTest extends TestCase {
+public class ProbabilityReaderTest {
     
-    public void testProbabilitiesCanBeRead() throws Exception {        
+    @Test
+    public void canReadProbabilities() throws Exception {        
         ProbabilityReader reader = new ProbabilityReader();
         reader.read();
         assertValues(reader.getProbs(), 221, 0.0001, 0.9999);

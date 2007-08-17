@@ -1,22 +1,21 @@
 package org.codehaus.jet.hypothesis.testers;
 
-import java.util.Arrays;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
-import junit.framework.TestCase;
+import java.util.Arrays;
 
 import org.codehaus.jet.hypothesis.HypothesisException;
 import org.codehaus.jet.hypothesis.HypothesisTester;
+import org.junit.Test;
 
-public class DefaultHypothesisTesterTest extends TestCase {
+public class DefaultHypothesisTesterTest {
 
-    private HypothesisTester tester;
+    private HypothesisTester tester = new DefaultHypothesisTester();       
     private double precision = 1e-6;
-    
-    public void setUp(){
-        tester = new DefaultHypothesisTester();        
-    }
-    
-    public void testCriticalValueCanBeEstimated() throws Exception {
+
+    @Test
+    public void canEstimateCriticalValue() throws Exception {
         assertCriticalValue(-2.56503943, DefaultHypothesisTester.URC_TEST, 1, 0, 1, 0.01, 0);
         assertCriticalValue(-1.94084677, DefaultHypothesisTester.URC_TEST, 1, 0, 1, 0.05, 0);
         assertCriticalValue(-1.61675256, DefaultHypothesisTester.URC_TEST, 1, 0, 1, 0.1, 0);        
@@ -31,7 +30,8 @@ public class DefaultHypothesisTesterTest extends TestCase {
         assertCriticalValue(33.73238820, DefaultHypothesisTester.JOHANSEN_TEST, 4, 3, 1, 0.01, 0);        
     }
     
-    public void testCriticalValueParamsAreValidated() throws Exception {
+    @Test
+    public void canValidateCriticalValueParams() throws Exception {
         assertCriticalValueParamsInvalid(DefaultHypothesisTester.URC_TEST, 0, 0, 1, 0.01, 0);
         assertCriticalValueParamsInvalid(DefaultHypothesisTester.URC_TEST, 13, 0, 1, 0.01, 0);
         assertCriticalValueParamsInvalid(DefaultHypothesisTester.URC_TEST, 1, -1, 1, 0.01, 0);
@@ -43,7 +43,8 @@ public class DefaultHypothesisTesterTest extends TestCase {
         assertCriticalValueParamsInvalid(DefaultHypothesisTester.URC_TEST, 1, 0, 1, 0.01, -1);
     }
 
-    public void testPValueCanBeEstimated() throws Exception {
+    @Test
+    public void canEstimatePValue() throws Exception {
         assertPValue(0.68594692, DefaultHypothesisTester.URC_TEST, 1, 0, 1, 0.01, 0);
         assertPValue(0.69877782, DefaultHypothesisTester.URC_TEST, 1, 0, 1, 0.05, 0);
         assertPValue(0.71441539, DefaultHypothesisTester.URC_TEST, 1, 0, 1, 0.1, 0);
@@ -58,7 +59,8 @@ public class DefaultHypothesisTesterTest extends TestCase {
         assertPValue(1.00000000, DefaultHypothesisTester.JOHANSEN_TEST, 4, 3, 1, 0.01, 0);        
     }    
 
-    public void testPValueParamsAreValidated() throws Exception {
+    @Test
+    public void canValidatePValueParams() throws Exception {
         assertPValueParamsInvalid(DefaultHypothesisTester.URC_TEST, 0, 0, 1, 0.01, 0);
         assertPValueParamsInvalid(DefaultHypothesisTester.URC_TEST, 13, 0, 1, 0.01, 0);
         assertPValueParamsInvalid(DefaultHypothesisTester.URC_TEST, 1, -1, 1, 0.01, 0);
@@ -70,6 +72,7 @@ public class DefaultHypothesisTesterTest extends TestCase {
         assertPValueParamsInvalid(DefaultHypothesisTester.URC_TEST, 1, 0, 1, 0.01, -1);
     }
 
+    @Test
     public void testTestNamesCanBeRetrieved() {
         assertEquals(Arrays.toString(DefaultHypothesisTester.SUPPORTED_TEST_NAMES), Arrays.toString(tester.listTestNames()));
     }
