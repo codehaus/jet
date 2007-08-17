@@ -1,17 +1,21 @@
 package org.codehaus.jet.regression.estimators;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.codehaus.jet.regression.MultipleLinearRegressionEstimator;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * 
  * @author Mauro Talevi
  */
-public abstract class AbstractMultipleLinearRegressionEstimatorTestCase extends TestCase {
+public abstract class AbstractMultipleLinearRegressionEstimatorTest {
 
     private MultipleLinearRegressionEstimator regression;
 
+    @Before
     public void setUp(){
         regression = createRegressionEstimator();
     }
@@ -22,25 +26,28 @@ public abstract class AbstractMultipleLinearRegressionEstimatorTestCase extends 
     
     protected abstract int getSampleSize();
 
-    public void testCanEstimateRegressionParameters(){
+    @Test
+    public void canEstimateRegressionParameters(){
         double[] beta = regression.estimateRegressionParameters();        
         assertEquals(getNumberOfRegressors(), beta.length);
     }
 
-    public void testCanEstimateResiduals(){
+    @Test
+    public void canEstimateResiduals(){
         double[] e = regression.estimateResiduals();
         assertEquals(getSampleSize(), e.length);
     }
     
-    public void testCanEstimateRegressionParametersVariance(){
+    @Test
+    public void canEstimateRegressionParametersVariance(){
         double[][] variance = regression.estimateRegressionParametersVariance();
         assertEquals(getNumberOfRegressors(), variance.length);
     }
 
-    public void testCanEstimateRegressandVariance(){
+    @Test
+    public void canEstimateRegressandVariance(){
         double variance = regression.estimateRegressandVariance();
         assertTrue(variance > 0.0);
-    }
-    
+    }   
 
 }

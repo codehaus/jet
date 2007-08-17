@@ -1,18 +1,20 @@
 package org.codehaus.jet.regression.estimators;
 
 import org.codehaus.jet.regression.MultipleLinearRegressionEstimator;
+import org.junit.Before;
 
 
 /**
  * 
  * @author Mauro Talevi
  */
-public class GLSMultipleLinearRegressionEstimatorTest extends AbstractMultipleLinearRegressionEstimatorTestCase {
+public class GLSMultipleLinearRegressionEstimatorTest extends AbstractMultipleLinearRegressionEstimatorTest {
 
     private double[] y;
     private double[][] x;
     private double[][] omega;
 
+    @Before
     public void setUp(){
         y = new double[]{11.0, 12.0, 13.0, 14.0, 15.0, 16.0};
         x = new double[6][];

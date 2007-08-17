@@ -1,18 +1,20 @@
 package org.codehaus.jet.hypothesis.rejection.evaluators;
-
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import org.codehaus.jet.hypothesis.rejection.ResponseSurfaceEvaluator;
+import org.junit.Before;
 
 /**
  * 
  * @author Mauro Talevi
  */
-public abstract class AbstractResponseSurfaceEvaluatorTestCase extends TestCase {
+public abstract class AbstractResponseSurfaceEvaluatorTest {
     
     private ResponseSurfaceEvaluator evaluator;
     
-    protected void setUp() throws Exception {
+    @Before
+    public void setUp() throws Exception {
         evaluator = createResponseSurfaceEvaluator();
     }
 

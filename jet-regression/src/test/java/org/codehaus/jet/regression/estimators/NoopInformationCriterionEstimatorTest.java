@@ -1,20 +1,24 @@
 package org.codehaus.jet.regression.estimators;
 
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
 
 
 /**
  * 
  * @author Mauro Talevi
  */
-public class NoopInformationCriterionEstimatorTest extends AbstractInformationCriterionEstimatorTestCase {
+public class NoopInformationCriterionEstimatorTest extends AbstractInformationCriterionEstimatorTest {
 
-
-    public void testCanCalculateRegressands(){
+    @Test
+    public void canCalculateRegressands(){
         double[] regressands = estimator.toRegressands(y, p);
         assertEquals(T-p, regressands.length);
     }
 
-    public void testCanCalculateRegressors(){
+    @Test
+    public void canCalculateRegressors(){
         double[][] regressors = estimator.toRegressors(y, p);
         assertEquals(T-p, regressors.length);
         for (int i = 0; i < regressors.length; i++) {
@@ -22,7 +26,8 @@ public class NoopInformationCriterionEstimatorTest extends AbstractInformationCr
         }
     }
     
-    public void testCanMinimiseIC(){
+    @Test
+    public void canMinimiseIC(){
         int min =  estimator.minimiseIC(p, p+5);       
         assertEquals(p, min);
     }

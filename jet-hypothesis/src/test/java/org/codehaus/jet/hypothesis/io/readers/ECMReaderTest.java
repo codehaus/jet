@@ -1,16 +1,20 @@
 package org.codehaus.jet.hypothesis.io.readers;
 
+import static org.junit.Assert.assertEquals;
+
 import org.codehaus.jet.hypothesis.io.BetaReader;
+import org.junit.Test;
 
 
 /**
  * @author Mauro Talevi
  */
-public class ECMReaderTest extends AbstractWeightReaderTestCase {
+public class ECMReaderTest extends AbstractWeightReaderTest {
 
     private BetaReader reader = new ECMReader("em2002");
     
-    public void testBetaAndWeightsCanBeRead() throws Exception {        
+    @Test
+    public void canReadBetaAndWeights() throws Exception {        
         reader.read(new int[]{1, 0, 1});
         assertBeta(reader.getBeta(), 221, 0, -0.38836757E+01, 0.34765811E+01);
         assertWeights(reader.getWeights(), 221, 0.36431605E-02, 0.38811112E-02);
@@ -25,7 +29,7 @@ public class ECMReaderTest extends AbstractWeightReaderTestCase {
         
     }
     
-    public void testInputParamsAreValidated() throws Exception {        
+    public void canValidateInputParams() throws Exception {        
         try {
             reader.read(new int[] { 0, 0 });
         } catch ( IllegalArgumentException e) {

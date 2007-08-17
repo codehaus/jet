@@ -1,13 +1,17 @@
 package org.codehaus.jet.hypothesis.rejection.estimators;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
 
 /**
  * 
  * @author Mauro Talevi
  */
-public class DefaultEstimatorProviderTest extends TestCase {
+public class DefaultEstimatorProviderTest {
 
+    @Test
     public void testCanHandleEstimatorNotFound(){
         DefaultEstimatorProvider provider = new DefaultEstimatorProvider();
         String name = "non-existent";
