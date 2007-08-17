@@ -28,18 +28,6 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-scm-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>install</phase>
-						<goals>
-							<goal>checkout</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
 					<execution>
@@ -68,6 +56,7 @@
 			<plugin>
 				<groupId>org.codehaus.xsite</groupId>
 				<artifactId>xsite-maven-plugin</artifactId>
+                <version>1.0-beta-7</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
@@ -79,6 +68,7 @@
 				<configuration>
 					<siteMapPath>${basedir}/src/site/content/sitemap.xml</siteMapPath>
 					<skinPath>${basedir}/src/site/templates/skin.html</skinPath>
+                    <resourcePaths>${basedir}/src/site/resources</resourcePaths>
 					<outputDirectoryPath>${basedir}/target/xsite</outputDirectoryPath>
 				</configuration>
 			</plugin>
