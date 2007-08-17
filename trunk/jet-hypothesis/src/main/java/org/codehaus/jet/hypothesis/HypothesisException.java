@@ -6,7 +6,7 @@ package org.codehaus.jet.hypothesis;
  * @author Mauro Talevi
  */
 @SuppressWarnings("serial")
-public class HypothesisException extends Exception {
+public class HypothesisException extends RuntimeException {
 
     /**
      * Creates a HypothesisException with message and cause

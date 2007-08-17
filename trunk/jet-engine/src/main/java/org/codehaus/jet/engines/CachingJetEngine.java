@@ -28,7 +28,7 @@ public class CachingJetEngine implements JetEngine {
         this.delegate = delegate;
     }
 
-    public double estimateCriticalValue(String testName, int[] options, double level, int sampleSize) throws JetException {
+    public double estimateCriticalValue(String testName, int[] options, double level, int sampleSize) {
         return value(ValueType.CRITICAL, testName, options, level, sampleSize);
     }
 
@@ -40,7 +40,7 @@ public class CachingJetEngine implements JetEngine {
         return delegate.listTestNames();
     }
 
-    private double value(ValueType type, String testName, int[] options, double level, int sampleSize) throws JetException {
+    private double value(ValueType type, String testName, int[] options, double level, int sampleSize) {
         String key = MessageFormat.format(KEY, type, testName, Arrays.toString(options), level, sampleSize);
         if ( !cache.containsKey(key) ){
             double value = 0;
