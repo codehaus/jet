@@ -9,8 +9,8 @@
     </section>
     <section>
         <name>Using JET</name>
-        <link title="Regression Javadoc">javadoc/jet-regression/index.html</link>
-        <link title="Hypothesis Javadoc">javadoc/jet-hypothesis/index.html</link>
+        <link title="Regression Javadoc">javadoc/regression/index.html</link>
+        <link title="Hypothesis Javadoc">javadoc/hypothesis/index.html</link>
         <page>rejection-values.html</page>
         <page>faq.html</page>
         <link title="Reporting Issues">http://jira.codehaus.org/browse/JET</link>
