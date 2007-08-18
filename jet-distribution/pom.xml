@@ -26,27 +26,46 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <version>1.1</version>
+        <artifactId>maven-dependency-plugin</artifactId>
         <executions>
           <execution>
+            <id>unpack-regression</id>
             <phase>install</phase>
             <goals>
-              <goal>run</goal>
+              <goal>unpack</goal>
             </goals>
             <configuration>
-              <tasks>
-                <mkdir dir="${project.build.outputDirectory}" />
-                <mkdir dir="${project.build.directory}/site/reports" />
-                <copy todir="${project.build.directory}/site/reports" overwrite="true" failonerror="false">
-                  <fileset dir="${basedir}/../components/">
-                    <include name="*/target/site/**" />
-                  </fileset>
-                  <filtermapper>
-                    <replacestring from="target/site/" to="/" />
-                  </filtermapper>
-                </copy>
-              </tasks>
+              <outputDirectory>${project.build.directory}/xsite/javadoc/jet-regression</outputDirectory>
+              <overWriteReleases>false</overWriteReleases>
+              <overWriteSnapshots>true</overWriteSnapshots>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>${pom.groupId}</groupId>
+                  <artifactId>jet-regression</artifactId>
+                  <version>${pom.version}</version>
+                  <classifier>javadoc</classifier>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+          <execution>
+            <id>unpack-hypothesis</id>
+            <phase>install</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/xsite/javadoc/jet-hypothesis</outputDirectory>
+              <overWriteReleases>false</overWriteReleases>
+              <overWriteSnapshots>true</overWriteSnapshots>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>${pom.groupId}</groupId>
+                  <artifactId>jet-hypothesis</artifactId>
+                  <version>${pom.version}</version>
+                  <classifier>javadoc</classifier>
+                </artifactItem>
+              </artifactItems>
             </configuration>
           </execution>
         </executions>
@@ -54,7 +73,6 @@
       <plugin>
         <groupId>org.codehaus.xsite</groupId>
         <artifactId>xsite-maven-plugin</artifactId>
-        <version>1.0-beta-7</version>
         <executions>
           <execution>
             <phase>package</phase>
@@ -72,8 +90,48 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <configuration>
+          <includeProjectDocumentation>false</includeProjectDocumentation>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>site</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <tasks>
+                <mkdir dir="${project.build.outputDirectory}" />
+                <mkdir dir="${project.build.directory}/site/reports" />
+                <copy todir="${project.build.directory}/site/reports" overwrite="true" failonerror="false">
+                  <fileset dir="${basedir}/../">
+                    <include name="*/target/site/**" />
+                  </fileset>
+                  <filtermapper>
+                    <replacestring from="target/site/" to="/" />
+                  </filtermapper>
+                </copy>
+              </tasks>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.1</version>
         <executions>
           <execution>
             <id>bin</id>
@@ -105,23 +163,7 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
-        <version>2.0-beta-5</version>
-        <configuration>
-          <includeProjectDocumentation>false</includeProjectDocumentation>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>install</phase>
-            <goals>
-              <goal>site</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
+   </plugins>
   </build>
 
 </project>
