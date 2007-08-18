@@ -4,7 +4,7 @@ import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.codehaus.jet.hypothesis.HypothesisException;
+import org.codehaus.jet.hypothesis.RejectionValueEstimateFailedException;
 import org.codehaus.jet.hypothesis.HypothesisTest;
 import org.codehaus.jet.hypothesis.HypothesisTester;
 import org.codehaus.jet.hypothesis.io.BetaReader;
@@ -62,7 +62,7 @@ public class DefaultHypothesisTester implements HypothesisTester {
                         sampleSize, reader.getParams(), level);                
             }
         } catch ( Exception e) {
-            throw new HypothesisException("Failed to estimate rejection value for parameters " +
+            throw new RejectionValueEstimateFailedException("Failed to estimate rejection value for parameters " +
                     MessageFormat.format(PARAMETERS, new Object[]{type, testName, Arrays.toString(options), level, sampleSize}),e);
         }        
     }

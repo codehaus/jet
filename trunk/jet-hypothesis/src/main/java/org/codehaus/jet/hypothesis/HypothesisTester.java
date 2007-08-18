@@ -18,6 +18,7 @@ public interface HypothesisTester {
      * @param level the significance level
      * @param sampleSize the sample size
      * @return The rejection value
+     * @throws RejectionValueEstimateFailedException when estimate fails
      */
     double estimateRejectionValue(RejectionValueType type, String testName, int[] options, double level, int sampleSize);
 

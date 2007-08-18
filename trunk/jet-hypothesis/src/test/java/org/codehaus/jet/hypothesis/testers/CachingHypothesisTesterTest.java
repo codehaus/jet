@@ -2,7 +2,6 @@ package org.codehaus.jet.hypothesis.testers;
 
 import static org.junit.Assert.assertTrue;
 
-import org.codehaus.jet.JetException;
 import org.codehaus.jet.hypothesis.HypothesisTester;
 import org.codehaus.jet.hypothesis.rejection.RejectionValueType;
 import org.junit.Test;
@@ -33,7 +32,7 @@ public class CachingHypothesisTesterTest {
         assertTrue(firstTime / secondTime > 100);
     }
 
-    private long timeToEstimateRejectionValue(RejectionValueType type, int[] options, int sampleSize, double significanceLevel) throws JetException {
+    private long timeToEstimateRejectionValue(RejectionValueType type, int[] options, int sampleSize, double significanceLevel)  {
         long start = System.currentTimeMillis();
         tester.estimateRejectionValue(type, "URC", options, significanceLevel, sampleSize);
         return System.currentTimeMillis() - start;
