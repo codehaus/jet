@@ -7,20 +7,17 @@
         <page>news.html</page>
         <page>changes.html</page>
         <page>mailing-lists.html</page>
-        <page>versioning.html</page>
     </section>
     <section>
         <name>Using JET</name>
         <page>getting-started.html</page>
         <page>rejection-values.html</page>
         <page>faq.html</page>
-        <page>list-user.html</page>
         <link title="Reporting Issues">http://jira.codehaus.org/browse/JET</link>
     </section>
     <section>
         <name>Developing JET</name>
-        <page>list-dev.html</page>
         <page>team.html</page>
-        <page>repository.html</page>
+        <page>source.html</page>
     </section>
 </sitemap>

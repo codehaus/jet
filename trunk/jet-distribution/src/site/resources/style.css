@@ -204,7 +204,7 @@ ul, ol {
     margin-bottom: 16px;
     font-size: 15px;
     font-weight: bold;
-    background-color: #9cf;
+    background-color: #ccc;
     padding: 2px;
 }
 
@@ -214,10 +214,11 @@ ul, ol {
 
 #content th {
     background-color: #036;
+    color: #fff;
 }
 
 #content td {
-    background-color: #9cf;
+    background-color: #ccc;
 }
 
 .Source pre {
@@ -225,7 +226,7 @@ ul, ol {
     font-family: courier new, monospace;
     font-size: 11px;
     border: 1px solid #036;
-    background-color: #9cf;
+    background-color: #ccc;
     color: black;
 }
 
@@ -306,7 +307,6 @@ ul, ol {
     border-left: 1px solid #036;
     border-top: 1px solid #036;
     border-bottom: 1px solid white; /* IE work-around */
-
     margin-bottom: 8px;
     background-color: white;
     color: #036;
@@ -323,8 +323,8 @@ ul, ol {
 }
 
 .MenuGroup .currentLink {
-/*    background-color: #036;*/
-    background-color: #9cf;
+    background-color: #ccc;
+    border-left: 1px solid #036;
     color: #000;
 }
 
