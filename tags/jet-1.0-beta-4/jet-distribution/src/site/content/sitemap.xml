@@ -1,0 +1,23 @@
+<sitemap>
+    <section>
+        <name>About JET</name>
+        <page>index.html</page>
+        <page>license.html</page>
+        <page>download.html</page>
+        <page>changes.html</page>
+        <page>mailing-lists.html</page>
+    </section>
+    <section>
+        <name>Using JET</name>
+        <link title="Regression Javadoc">javadoc/jet-regression/index.html</link>
+        <link title="Hypothesis Javadoc">javadoc/jet-hypothesis/index.html</link>
+        <page>rejection-values.html</page>
+        <page>faq.html</page>
+        <link title="Reporting Issues">http://jira.codehaus.org/browse/JET</link>
+    </section>
+    <section>
+        <name>Developing JET</name>
+        <page>team.html</page>
+        <page>source.html</page>
+    </section>
+</sitemap>
