@@ -12,11 +12,6 @@
   <dependencies>
     <dependency>
       <groupId>${pom.groupId}</groupId>
-      <artifactId>jet-regression</artifactId>
-      <version>${pom.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>${pom.groupId}</groupId>
       <artifactId>jet-hypothesis</artifactId>
       <version>${pom.version}</version>
     </dependency>

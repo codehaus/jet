@@ -19,11 +19,5 @@
 			<unpack>false</unpack>
 			<scope>runtime</scope>
 		</dependencySet>
-		<dependencySet>
-			<outputDirectory>/webapps</outputDirectory>
-			<outputFileNameMapping>${artifactId}.${extension}</outputFileNameMapping>
-			<unpack>false</unpack>
-			<scope>webapp</scope>
-		</dependencySet>
 	</dependencySets>
 </assembly>
