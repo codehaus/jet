@@ -5,7 +5,7 @@ import static org.junit.Assert.fail;
 
 import java.util.Arrays;
 
-import org.codehaus.jet.hypothesis.HypothesisException;
+import org.codehaus.jet.hypothesis.RejectionValueEstimateFailedException;
 import org.codehaus.jet.hypothesis.HypothesisTest;
 import org.codehaus.jet.hypothesis.HypothesisTester;
 import org.codehaus.jet.hypothesis.rejection.RejectionValueType;
@@ -90,9 +90,9 @@ public class DefaultHypothesisTesterTest {
         try {
             tester.estimateRejectionValue(type, testName, new int[]{integratedVariables, 
                             regressionVariables, testType}, level, sampleSize);
-            fail("HypothesisException expected");
+            fail("RejectionValueEstimateFailedException expected");
             return false;
-        } catch ( HypothesisException e) {
+        } catch ( RejectionValueEstimateFailedException e) {
            return e.getCause() instanceof IllegalArgumentException;
         }
     }

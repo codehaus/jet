@@ -11,7 +11,6 @@
   <modules>
     <module>jet-regression</module>
     <module>jet-hypothesis</module>
-    <module>jet-engine</module>
   </modules>
   <scm>
     <connection>scm:svn:https://svn.codehaus.org/jet/trunk</connection>
@@ -184,7 +183,4 @@
       <artifactId>junit</artifactId>
     </dependency>
   </dependencies>
-  <properties>
-    <jet.properties>${user.home}/jet.properties</jet.properties>
-  </properties>
 </project>
