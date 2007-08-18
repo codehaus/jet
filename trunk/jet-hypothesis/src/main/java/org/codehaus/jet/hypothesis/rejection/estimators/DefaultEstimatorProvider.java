@@ -17,8 +17,8 @@ import org.codehaus.jet.hypothesis.rejection.evaluators.URCResponseSurfaceEvalua
  */
 public class DefaultEstimatorProvider implements RejectionValueEstimatorProvider {
     
-    private Map<String, CriticalValueEstimator> criticalValueEstimators;
-    private Map<String, PValueEstimator> pValueEstimators;
+    private Map<String, RejectionValueEstimator> criticalValueEstimators;
+    private Map<String, RejectionValueEstimator> pValueEstimators;
     
     /**
      * Creates a DefaultEstimatorProvider with default estimator caches
@@ -33,14 +33,14 @@ public class DefaultEstimatorProvider implements RejectionValueEstimatorProvider
      * @param criticalValueEstimators the cache of CriticalValuesEstimators
      * @param pValueEstimators the cache of PValueEstimators
      */
-    public DefaultEstimatorProvider(Map<String, CriticalValueEstimator> criticalValueEstimators, 
-                                    Map<String, PValueEstimator> pValueEstimators){
+    public DefaultEstimatorProvider(Map<String, RejectionValueEstimator> criticalValueEstimators, 
+                                    Map<String, RejectionValueEstimator> pValueEstimators){
         this.criticalValueEstimators = criticalValueEstimators;
         this.pValueEstimators = pValueEstimators;
     }
     
     public RejectionValueEstimator getCriticalValueEstimator(String testName) {
-        RejectionValueEstimator estimator = (RejectionValueEstimator)criticalValueEstimators.get(testName);
+        RejectionValueEstimator estimator = criticalValueEstimators.get(testName);
         if ( estimator == null ) {
             throw new IllegalArgumentException("RejectionValueEstimator not found for test name "+testName);
         }
@@ -48,15 +48,15 @@ public class DefaultEstimatorProvider implements RejectionValueEstimatorProvider
     }
 
     public RejectionValueEstimator getPValueEstimator(String testName) {
-        RejectionValueEstimator estimator = (RejectionValueEstimator)pValueEstimators.get(testName);
+        RejectionValueEstimator estimator = pValueEstimators.get(testName);
         if ( estimator == null ) {
             throw new IllegalArgumentException("RejectionValueEstimator not found for test name "+testName);
         }
         return estimator;
     }
     
-    private static Map<String, CriticalValueEstimator> createDefaultCriticalValueEstimators() {
-        Map<String, CriticalValueEstimator> map = new HashMap<String, CriticalValueEstimator>();        
+    private static Map<String, RejectionValueEstimator> createDefaultCriticalValueEstimators() {
+        Map<String, RejectionValueEstimator> map = new HashMap<String, RejectionValueEstimator>();        
         map.put(HypothesisTest.ECM.getName(), new CriticalValueEstimator(new ECMResponseSurfaceEvaluator(), 11, 2.0));
         map.put(HypothesisTest.URC.getName(), new CriticalValueEstimator(new URCResponseSurfaceEvaluator(), 9, 2.0));
         map.put(HypothesisTest.LRC.getName(), new CriticalValueEstimator(11, 2.0));
@@ -64,8 +64,8 @@ public class DefaultEstimatorProvider implements RejectionValueEstimatorProvider
         return map;
     }
 
-    private static Map<String, PValueEstimator> createDefaultPValueEstimators() {
-        Map<String, PValueEstimator> map = new HashMap<String, PValueEstimator>();       
+    private static Map<String, RejectionValueEstimator> createDefaultPValueEstimators() {
+        Map<String, RejectionValueEstimator> map = new HashMap<String, RejectionValueEstimator>();       
         map.put(HypothesisTest.ECM.getName(), new PValueEstimator(new ECMResponseSurfaceEvaluator(), 11, 2.0));
         map.put(HypothesisTest.URC.getName(), new PValueEstimator(new URCResponseSurfaceEvaluator(), 9, 2.0));
         map.put(HypothesisTest.LRC.getName(), new PValueEstimator(11, 2.0));
