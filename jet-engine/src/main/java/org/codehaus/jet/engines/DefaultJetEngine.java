@@ -2,6 +2,7 @@ package org.codehaus.jet.engines;
 
 import org.codehaus.jet.JetEngine;
 import org.codehaus.jet.hypothesis.HypothesisTester;
+import org.codehaus.jet.hypothesis.rejection.RejectionValueType;
 import org.codehaus.jet.hypothesis.testers.DefaultHypothesisTester;
 
 /**
@@ -29,11 +30,11 @@ public class DefaultJetEngine implements JetEngine {
     }
 
     public double estimateCriticalValue(String testName, int[] options, double level, int sampleSize) {
-        return tester.estimateCriticalValue(testName, options, level, sampleSize);
+        return tester.estimateRejectionValue(RejectionValueType.CRITICAL, testName, options, level, sampleSize);
     }
 
     public double estimatePValue(String testName, int[] options, double level, int sampleSize) {
-        return tester.estimatePValue(testName, options, level, sampleSize);
+        return tester.estimateRejectionValue(RejectionValueType.P, testName, options, level, sampleSize);
     }
 
     public String[] listTestNames() {
