@@ -6,6 +6,7 @@ import java.util.Map;
 import org.codehaus.jet.hypothesis.HypothesisTest;
 import org.codehaus.jet.hypothesis.rejection.RejectionValueEstimator;
 import org.codehaus.jet.hypothesis.rejection.RejectionValueEstimatorProvider;
+import org.codehaus.jet.hypothesis.rejection.RejectionValueType;
 import org.codehaus.jet.hypothesis.rejection.evaluators.ECMResponseSurfaceEvaluator;
 import org.codehaus.jet.hypothesis.rejection.evaluators.URCResponseSurfaceEvaluator;
 
@@ -39,16 +40,16 @@ public class DefaultEstimatorProvider implements RejectionValueEstimatorProvider
         this.pValueEstimators = pValueEstimators;
     }
     
-    public RejectionValueEstimator getCriticalValueEstimator(String testName) {
-        RejectionValueEstimator estimator = criticalValueEstimators.get(testName);
-        if ( estimator == null ) {
-            throw new IllegalArgumentException("RejectionValueEstimator not found for test name "+testName);
+    public RejectionValueEstimator getEstimator(RejectionValueType type, String testName) {        
+        RejectionValueEstimator estimator = null;
+        switch ( type ){
+            case CRITICAL: 
+                estimator = criticalValueEstimators.get(testName);
+                break;
+            case P: 
+                estimator = pValueEstimators.get(testName);
+                break;
         }
-        return estimator;
-    }
-
-    public RejectionValueEstimator getPValueEstimator(String testName) {
-        RejectionValueEstimator estimator = pValueEstimators.get(testName);
         if ( estimator == null ) {
             throw new IllegalArgumentException("RejectionValueEstimator not found for test name "+testName);
         }

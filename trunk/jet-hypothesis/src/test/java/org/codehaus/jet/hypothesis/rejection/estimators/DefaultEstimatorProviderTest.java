@@ -3,6 +3,8 @@ package org.codehaus.jet.hypothesis.rejection.estimators;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import org.codehaus.jet.hypothesis.rejection.RejectionValueEstimatorProvider;
+import org.codehaus.jet.hypothesis.rejection.RejectionValueType;
 import org.junit.Test;
 
 /**
@@ -13,16 +15,16 @@ public class DefaultEstimatorProviderTest {
 
     @Test
     public void testCanHandleEstimatorNotFound(){
-        DefaultEstimatorProvider provider = new DefaultEstimatorProvider();
+        RejectionValueEstimatorProvider provider = new DefaultEstimatorProvider();
         String name = "non-existent";
         try {
-            provider.getCriticalValueEstimator(name);
+            provider.getEstimator(RejectionValueType.CRITICAL, name);
             fail("IllegalArgumentException expected");
         } catch ( IllegalArgumentException e) {
             assertEquals("RejectionValueEstimator not found for test name "+name, e.getMessage());
         }
         try {
-            provider.getPValueEstimator(name);
+            provider.getEstimator(RejectionValueType.P, name);
             fail("IllegalArgumentException expected");
         } catch ( IllegalArgumentException e) {
             assertEquals("RejectionValueEstimator not found for test name "+name, e.getMessage());

@@ -14,6 +14,7 @@ import org.codehaus.jet.hypothesis.io.ReaderProvider;
 import org.codehaus.jet.hypothesis.io.readers.DefaultReaderProvider;
 import org.codehaus.jet.hypothesis.rejection.RejectionValueEstimator;
 import org.codehaus.jet.hypothesis.rejection.RejectionValueEstimatorProvider;
+import org.codehaus.jet.hypothesis.rejection.RejectionValueType;
 import org.codehaus.jet.hypothesis.rejection.estimators.DefaultEstimatorProvider;
 
 /**
@@ -23,7 +24,7 @@ import org.codehaus.jet.hypothesis.rejection.estimators.DefaultEstimatorProvider
  */
 public class DefaultHypothesisTester implements HypothesisTester {
 
-    private static final String PARAMETERS = "[testName={0}, options={1}, level={2}, sampleSize={3}]";
+    private static final String PARAMETERS = "[type={0}, testName={1}, options={2}, level={3}, sampleSize={4}]";
 
     static final String[] SUPPORTED_TEST_NAMES = new String[]{HypothesisTest.URC.getName(), HypothesisTest.ECM.getName(), HypothesisTest.JOHANSEN.getName()};
     static final String[] ASYMPTOTIC_TEST_NAMES = new String[]{HypothesisTest.LRC.getName(),  HypothesisTest.JOHANSEN.getName()};
@@ -42,52 +43,28 @@ public class DefaultHypothesisTester implements HypothesisTester {
         this.readerProvider = readerProvider;
     }
 
-    public double estimateCriticalValue(String testName, int[] options, double level, int sampleSize) {
+    public double estimateRejectionValue(RejectionValueType type, String testName, int[] options, double level, int sampleSize) {
         try {            
             ProbabilityReader probabilityReader = readerProvider.getProbabilityReader();
             probabilityReader.read();
             if ( isAsymptotic(testName) ){
                 CriticalValueReader reader = readerProvider.getCriticalValueReader(testName);
                 reader.read(options);
-                RejectionValueEstimator estimator = estimatorProvider.getCriticalValueEstimator(testName);
+                RejectionValueEstimator estimator = estimatorProvider.getEstimator(type, testName);
                 return estimator.estimateAsymptoticValue(probabilityReader.getNorms(), probabilityReader.getProbs(),
                         reader.getWeights(), reader.getCriticalValues(), level);
             } else {
                 BetaReader reader = readerProvider.getBetaReader(testName);
                 reader.read(options);
-                RejectionValueEstimator estimator = estimatorProvider.getCriticalValueEstimator(testName);
+                RejectionValueEstimator estimator = estimatorProvider.getEstimator(type, testName);
                 return estimator.estimateValue(probabilityReader.getNorms(), probabilityReader.getProbs(),
                         reader.getWeights(), reader.getBeta(), 
                         sampleSize, reader.getParams(), level);                
             }
         } catch ( Exception e) {
-            throw new HypothesisException("Failed to estimate critical value for parameters " +
-                    MessageFormat.format(PARAMETERS, new Object[]{testName, Arrays.toString(options), level, sampleSize}),e);
-        }
-    }
-
-    public double estimatePValue(String testName, int[] options, double level, int sampleSize) {
-        try {
-            ProbabilityReader probabilityReader = readerProvider.getProbabilityReader();
-            probabilityReader.read();
-            if ( isAsymptotic(testName) ){
-                CriticalValueReader reader = readerProvider.getCriticalValueReader(testName);
-                reader.read(options);
-                RejectionValueEstimator estimator = estimatorProvider.getPValueEstimator(testName);
-                return estimator.estimateAsymptoticValue(probabilityReader.getNorms(), probabilityReader.getProbs(),
-                        reader.getWeights(), reader.getCriticalValues(), level);
-            } else {
-                BetaReader reader = readerProvider.getBetaReader(testName);
-                reader.read(options);
-                RejectionValueEstimator estimator = estimatorProvider.getPValueEstimator(testName);
-                return estimator.estimateValue(probabilityReader.getNorms(), probabilityReader.getProbs(),
-                        reader.getWeights(), reader.getBeta(), 
-                        sampleSize, reader.getParams(), level);                
-            }
-        } catch ( Exception e) {
-            throw new HypothesisException("Failed to estimate p-value for parameters "+
-                    MessageFormat.format(PARAMETERS, new Object[]{testName, Arrays.toString(options), level, sampleSize}),e);
-        }
+            throw new HypothesisException("Failed to estimate rejection value for parameters " +
+                    MessageFormat.format(PARAMETERS, new Object[]{type, testName, Arrays.toString(options), level, sampleSize}),e);
+        }        
     }
 
     public String[] listTestNames() {
@@ -97,6 +74,5 @@ public class DefaultHypothesisTester implements HypothesisTester {
     private boolean isAsymptotic(String testName) {
         return asymptoticTests.contains(testName);
     }
-
 
 }
