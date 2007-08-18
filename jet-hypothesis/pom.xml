@@ -4,7 +4,7 @@
   <parent>
     <artifactId>jet-parent</artifactId>
     <groupId>org.codehaus.jet</groupId>
-    <version>1.0-beta-4</version>
+    <version>1.0-SNAPSHOT</version>
   </parent>
   <artifactId>jet-hypothesis</artifactId>
   <name>JET Hypothesis</name>
