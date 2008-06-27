@@ -28,23 +28,7 @@
       <name>Codehaus JET Snapshot Repository</name>
       <url>dav:https://dav.codehaus.org/snapshots.repository/jet/</url>
     </snapshotRepository>
-    <site>
-      <id>codehaus.org</id>
-      <url>dav:https://dav.codehaus.org/jet</url>
-    </site>
   </distributionManagement>
-  <repositories>
-    <repository>
-      <id>codehaus-repository</id>
-      <name>Codehaus Repository</name>
-      <url>http://repository.codehaus.org</url>
-    </repository>
-    <repository>
-      <id>codehaus-snapshots-repository</id>
-      <name>Codehaus Snapshots Repository</name>
-      <url>http://snapshots.repository.codehaus.org</url>
-    </repository>
-  </repositories>
   <build>
     <extensions>
       <extension>
