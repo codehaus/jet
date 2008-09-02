@@ -3,7 +3,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.codehaus.jet</groupId>
-  <artifactId>jet-parent</artifactId>
+  <artifactId>jet</artifactId>
   <packaging>pom</packaging>
   <name>JET Parent</name>
   <version>1.0-SNAPSHOT</version>
@@ -17,18 +17,32 @@
     <developerConnection>scm:svn:https://svn.codehaus.org/jet/trunk</developerConnection>
     <url>https://svn.codehaus.org/jet/trunk</url>
   </scm>
-  <distributionManagement>
-    <repository>
-      <id>codehaus.org</id>
-      <name>Codehaus JET Repository</name>
-      <url>dav:https://dav.codehaus.org/repository/jet/</url>
-    </repository>
-    <snapshotRepository>
-      <id>codehaus.org</id>
-      <name>Codehaus JET Snapshot Repository</name>
-      <url>dav:https://dav.codehaus.org/snapshots.repository/jet/</url>
-    </snapshotRepository>
-  </distributionManagement>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.jmock</groupId>
+        <artifactId>jmock-junit4</artifactId>
+        <version>2.2.0</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.3.1</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.jmock</groupId>
+      <artifactId>jmock-junit4</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+  </dependencies>
   <build>
     <extensions>
       <extension>
@@ -246,30 +260,16 @@
       </build>
     </profile>
   </profiles>
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.jmock</groupId>
-        <artifactId>jmock-junit4</artifactId>
-        <version>2.2.0</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.3.1</version>
-        <scope>test</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-  <dependencies>
-    <dependency>
-      <groupId>org.jmock</groupId>
-      <artifactId>jmock-junit4</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-    </dependency>
-  </dependencies>
+  <distributionManagement>
+    <repository>
+      <id>codehaus.org</id>
+      <name>Codehaus JET Repository</name>
+      <url>dav:https://dav.codehaus.org/repository/jet/</url>
+    </repository>
+    <snapshotRepository>
+      <id>codehaus.org</id>
+      <name>Codehaus JET Snapshot Repository</name>
+      <url>dav:https://dav.codehaus.org/snapshots.repository/jet/</url>
+    </snapshotRepository>
+  </distributionManagement>
 </project>
